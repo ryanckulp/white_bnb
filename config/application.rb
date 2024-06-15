@@ -16,6 +16,8 @@ module WhiteBnb
     # Common ones are `templates`, `generators`, or `middleware`, for example.
     config.autoload_lib(ignore: %w[assets tasks])
 
+    config.time_zone = 'Eastern Time (US & Canada)'
+
     # allow cross origin requests
     config.middleware.insert_before 0, Rack::Cors do
       allow do
