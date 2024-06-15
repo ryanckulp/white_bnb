@@ -1,0 +1,11 @@
+<% meta title: 'Create a new blog post' %>
+
+<%= render partial: "shared/heading", locals: { title: 'New Post', description: '' } %>
+
+<div class="max-w-3xl mx-auto">
+  <div class="mt-8">
+    <%= link_to '← Back to all posts', blog_posts_path, class: 'hover:opacity-75 mr-1 w-fit font-semibold' %>
+
+    <%= render "form", blog_post: @blog_post %>
+  </div>
+</div>

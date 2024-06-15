@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%= metamagic site: 'WhiteBnb', title: [:site, :title], separator: " | " %>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <!-- tailwind components -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.10.1/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.css" rel="stylesheet" />
+
+    <!-- app styles -->
+    <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+
+    <%= render "shared/script_tags" %>
+  </head>
+
+  <body>
+    <main class="container mx-auto mt-14 px-6">
+      <%= render "shared/impersonator" %>
+      <%= render "shared/flash" %>
+      <%= render "shared/header" %>
+      <%= yield %>
+    </main>
+  </body>
+</html>
