@@ -3,6 +3,8 @@ class User < ApplicationRecord
   include Onboardable
   include Billable
 
+  has_many :bookings, dependent: :destroy
+
   scope :subscribed, -> { where.not(stripe_subscription_id: [nil, '']) }
 
   # :nocov:
