@@ -67,7 +67,9 @@
     background: #86efac /* green-300; default: #FFFFC0 */
   }
 
-  .past {}
+  .past {
+    background: #DDD;
+  }
   .future {}
 
   .start-date {}

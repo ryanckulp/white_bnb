@@ -1,0 +1,11 @@
+<%= turbo_frame_tag 'calendar' do %>
+  <%= month_calendar(events: @bookings, attribute: :start_date, end_attribute: :end_date, partial: 'simple_calendar/calendar') do |date, bookings| %>
+    <%= date %>
+
+    <% bookings.each do |booking| %>
+      <div>
+        <%= 'Reserved' %>
+      </div>
+    <% end %>
+  <% end %>
+<% end %>
