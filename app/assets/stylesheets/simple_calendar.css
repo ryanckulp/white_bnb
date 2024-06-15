@@ -55,6 +55,10 @@
     font-size: 16px;
   }
 
+  .day.future:not(.has-events) {
+    cursor: pointer;
+  }
+
   .wday-0 {}
   .wday-1 {}
   .wday-2 {}
@@ -64,7 +68,7 @@
   .wday-6 {}
 
   .today {
-    background: #86efac /* green-300; default: #FFFFC0 */
+    background: #FFFFC0
   }
 
   .past {
