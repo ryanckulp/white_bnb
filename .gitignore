@@ -43,3 +43,5 @@ dump.rdb
 
 /config/credentials/test.key
 coverage
+
+/config/credentials/development.key
