@@ -1,5 +1,5 @@
 ActiveAdmin.register ScriptTag do
-  menu priority: 7
+  menu priority: 8
 
   # Specify parameters which should be permitted for assignment
   permit_params :name, :code, :enabled

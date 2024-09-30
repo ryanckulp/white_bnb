@@ -3,6 +3,14 @@
 
 raise StandardError, "DO NOT RUN THIS IN PRODUCTION" if Rails.env.production?
 
-require 'seed_support/rewardful'
+puts "creating default Settings..."
+settings = [
+  { key: 'per_night_price', value: 130 },
+  { key: 'minimum_nights', value: 4 }
+]
 
+settings.each { |setting | Setting.find_or_create_by(setting) }
+
+require 'seed_support/rewardful'
+puts "setting up Rewardful affiliate program..."
 SeedSupport::Rewardful.run
