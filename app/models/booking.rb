@@ -9,6 +9,22 @@ class Booking < ApplicationRecord
   scope :upcoming, -> { where('end_date >= ?', Date.today) }
   scope :unpaid, -> { where(stripe_payment_id: nil) }
 
+  def addon_fees
+    booking_addons.sum { |ba| ba.addon.price }.to_f
+  end
+
+  def payment
+    Stripe::PaymentIntent.retrieve(stripe_payment_id)
+  end
+
+  def total_amount
+    ((nights * Setting.per_night_price) + addon_fees).to_i # must be integer
+  end
+
+  def nights
+    (end_date - start_date).to_i
+  end
+
   def self.ransackable_associations(*)
     ["rich_text_notes", "user"]
   end

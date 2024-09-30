@@ -6,7 +6,7 @@ raise StandardError, "DO NOT RUN THIS IN PRODUCTION" if Rails.env.production?
 puts "creating default Settings..."
 settings = [
   { key: 'per_night_price', value: 130 },
-  { key: 'minimum_nights', value: 4 }
+  { key: 'minimum_nights', value: 4 } # TODO: enforce this logic on /book
 ]
 
 settings.each { |setting| Setting.find_or_create_by(setting) }

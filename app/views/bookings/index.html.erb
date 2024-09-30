@@ -1,4 +1,6 @@
-<section data-controller="calendar" data-calendar-price-per-night-value="<%= global_setting('per_night_price') %>">
+<%= render partial: "shared/heading", locals: { title: 'Book', description: "Select dates for your stay at the Hacker House." } %>
+
+<section data-controller="calendar" data-calendar-price-per-night-value="<%= Setting.per_night_price %>">
   <%= turbo_frame_tag 'calendar' do %>
     <%= month_calendar(events: @bookings, attribute: :start_date, end_attribute: :end_date, partial: 'simple_calendar/calendar') do |date, bookings| %>
       <%= date %>
