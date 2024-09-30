@@ -30,7 +30,7 @@ class BookingsController < ApplicationController
   def reset_partial_bookings
     return unless current_user
 
-    session.delete(:current_booking_id)
+    reset_current_booking
     current_user.bookings.upcoming.unpaid.destroy_all
   end
 

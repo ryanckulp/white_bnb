@@ -12,13 +12,13 @@ class AddonsController < ApplicationController
       @booking.booking_addons.create(addon_id: addon_id)
     end
 
-    redirect_to subscribe_index_path
+    redirect_to checkout_index_path
   end
 
   private
 
   def addon_params
-    params.require(:addons).permit!
+    params.fetch(:addons, {}).permit!
   end
 
   def set_booking
