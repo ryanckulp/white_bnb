@@ -1,6 +1,8 @@
 class BookingsController < ApplicationController
+  before_action :reset_partial_bookings
+
   def index
-    @bookings = Booking.where('end_date >= ?', Date.today)
+    @bookings = Booking.upcoming # including paid/unpaid to avoid double booking (ex: if 2 users attempt to book same dates)
   end
 
   def create
@@ -8,6 +10,8 @@ class BookingsController < ApplicationController
 
     if booking.save
       create_and_sign_in_user unless current_user
+      booking.update(user_id: current_user.id)
+      session[:current_booking_id] = booking.id
       status = 'created'
     else
       status = 'fail'
@@ -20,6 +24,14 @@ class BookingsController < ApplicationController
 
   def booking_params
     params.require(:booking).permit(:start_date, :end_date)
+  end
+
+  # ex: user visits /addons, then decides to restart booking process
+  def reset_partial_bookings
+    return unless current_user
+
+    session.delete(:current_booking_id)
+    current_user.bookings.upcoming.unpaid.destroy_all
   end
 
   def create_and_sign_in_user
