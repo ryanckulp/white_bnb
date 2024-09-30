@@ -9,7 +9,7 @@ settings = [
   { key: 'minimum_nights', value: 4 }
 ]
 
-settings.each { |setting | Setting.find_or_create_by(setting) }
+settings.each { |setting| Setting.find_or_create_by(setting) }
 
 require 'seed_support/rewardful'
 puts "setting up Rewardful affiliate program..."

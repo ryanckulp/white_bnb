@@ -1,5 +1,4 @@
 module ApplicationHelper
-
   def global_setting(key)
     Setting.find_by_key(key)&.value
   end
