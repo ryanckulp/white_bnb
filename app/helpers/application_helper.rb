@@ -1,8 +1,4 @@
 module ApplicationHelper
-  def global_setting(key)
-    Setting.find_by_key(key)&.value
-  end
-
   def nav_link_classes(path = nil)
     defaults = 'ml-8 whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900'
     defaults.gsub!('gray', 'black').gsub!('-medium', '-bold') if request.path == "/#{path}"
