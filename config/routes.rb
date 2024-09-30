@@ -6,7 +6,8 @@ Rails.application.routes.draw do
   devise_for :users, path: '', path_names: { sign_in: 'login', sign_up: 'signup' }, controllers: { registrations: 'registrations' }
   get 'logout', to: 'pages#logout', as: 'logout'
 
-  resources :bookings, controller: :bookings, path: 'book'
+  resources :bookings, only: [:new, :create]
+  get 'book', to: 'bookings#index', as: 'book'
 
   resources :subscribe, only: [:index]
   resources :dashboard, only: [:index]

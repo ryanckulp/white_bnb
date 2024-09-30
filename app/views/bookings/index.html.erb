@@ -1,21 +1,24 @@
-<%= turbo_frame_tag 'calendar' do %>
-  <%= month_calendar(events: @bookings, attribute: :start_date, end_attribute: :end_date, partial: 'simple_calendar/calendar') do |date, bookings| %>
-    <%= date %>
+<section data-controller="calendar" data-calendar-price-per-night-value="<%= global_setting('per_night_price') %>">
+  <%= turbo_frame_tag 'calendar' do %>
+    <%= month_calendar(events: @bookings, attribute: :start_date, end_attribute: :end_date, partial: 'simple_calendar/calendar') do |date, bookings| %>
+      <%= date %>
 
-    <% bookings.each do |booking| %>
-      <div>
-        <%= 'Reserved' %>
-      </div>
+      <% bookings.each do |booking| %>
+        <div>
+          <%= 'Reserved' %>
+        </div>
+      <% end %>
     <% end %>
   <% end %>
-<% end %>
 
-<div class="text-right mb-2">
-  <p class="sr-only">Start Date: <span id="start_date"></span></p>
-  <p class="sr-only">End Date: <span id="end_date"></span></p>
-</div>
+  <div class="text-right mb-2">
+    <p class="sr-only">Start Date: <span id="start_date"></span></p>
+    <p class="sr-only">End Date: <span id="end_date"></span></p>
+  </div>
 
-<div class="text-center mt-4">
-  <%= link_to 'Book Now', '#', class: 'bg-blue-500 px-4 py-2 text-white text-lg rounded-md' %>
-  <p class="mt-2"><span id="price_calculation"></span></p>
-</div>
+  <div class="text-center mt-4">
+    <input type="hidden" name="csrf-token" value="<%= form_authenticity_token %>">
+    <button class="bg-blue-500 px-4 py-2 text-white text-lg rounded-md" data-action="click->calendar#createBooking">Book Now</button>
+    <p class="mt-2"><span id="price_calculation"></span></p>
+  </div>
+</section>

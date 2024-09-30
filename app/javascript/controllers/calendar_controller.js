@@ -5,6 +5,7 @@ export default class extends Controller {
   static values = { startDate: String, endDate: String, pricePerNight: Number }
 
   connect() {
+    console.log('Calendar JS connected')
     this.startDateValue = localStorage.getItem('bnb_start_date');
     this.endDateValue = localStorage.getItem('bnb_end_date');
     this.highlightDates();
@@ -56,13 +57,13 @@ export default class extends Controller {
   }
 
   saveDate() {
-    this.resetStartEnd();
-
     if (Array.from(event.currentTarget.classList).includes('has-events')) {
       this.resetStartEnd()
       alert('Cannot select a date that is already booked')
       return;
     }
+
+    this.resetStartEnd();
 
     let day = event.currentTarget.id;
     let dates = [new Date(day), new Date(this.startDateValue), new Date(this.endDateValue)].filter(Boolean).filter(d => !isNaN(d));
@@ -87,5 +88,24 @@ export default class extends Controller {
     let timeDiff = new Date(this.endDateValue).getTime() - new Date(this.startDateValue).getTime();
     let daysDiff = Math.round(timeDiff / (1000 * 3600 * 24));
     if (daysDiff > 0) { price_calculation.innerText = `(${daysDiff} nights * $${this.pricePerNightValue} /night) => $${daysDiff * this.pricePerNightValue}` };
+  }
+
+  createBooking() {
+    fetch('/bookings', {
+      method: 'post',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').content
+      },
+      body: JSON.stringify({ booking: { start_date: this.startDateValue, end_date: this.endDateValue } } )
+    })
+    .then(response => response.json())
+    .then(json => {
+      if (json.status == 'created') {
+        window.location.href = '/addons'
+      } else {
+        alert('Something went wrong, please try again')
+      }
+    });
   }
 }

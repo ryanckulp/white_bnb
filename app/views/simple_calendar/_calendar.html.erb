@@ -3,7 +3,7 @@
     <h1 class="calendar-title text-3xl"><%= t('date.month_names')[start_date.month] %> <%= start_date.year %></h1>
 
     <nav class="text-md my-4">
-      <%= link_to t('simple_calendar.previous', default: 'Previous Month'), calendar.url_for_previous_view, class: 'hover:underline' %> | 
+      <%= link_to t('simple_calendar.previous', default: 'Previous Month'), calendar.url_for_previous_view, class: 'hover:underline' %> |
       <%= link_to t('simple_calendar.today', default: 'Today'), calendar.url_for_today_view, class: 'hover:underline' %> |
       <%= link_to t('simple_calendar.next', default: 'Next Month'), calendar.url_for_next_view, class: 'hover:underline' %>
     </nav>
@@ -18,7 +18,7 @@
       </tr>
     </thead>
 
-    <tbody data-controller="calendar" data-calendar-price-per-night-value="<%= global_setting('per_night_price') %>">
+    <tbody">
       <% date_range.each_slice(7) do |week| %>
         <%= content_tag :tr, class: calendar.tr_classes_for(week) do %>
           <% week.each do |day| %>
