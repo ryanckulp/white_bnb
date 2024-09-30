@@ -1,5 +1,5 @@
 ActiveAdmin.register User do
-  menu priority: 3
+  menu priority: 5
 
   # Specify parameters which should be permitted for assignment
   permit_params :email, :admin, :stripe_customer_id, :stripe_subscription_id
