@@ -1,15 +1,19 @@
 <div class="simple-calendar">
-  <div class="calendar-heading text-center">
-    <h1 class="calendar-title text-3xl"><%= t('date.month_names')[start_date.month] %> <%= start_date.year %></h1>
+  <div class="calendar-heading flex mb-2">
+    <div>
+      <h1 class="calendar-title font-semibold text:xl sm:text-2xl"><%= t('date.month_names')[start_date.month] %> <%= start_date.year %></h1>
+    </div>
 
-    <nav class="text-md my-4">
-      <%= link_to t('simple_calendar.previous', default: 'Previous Month'), calendar.url_for_previous_view, class: 'hover:underline' %> |
-      <%= link_to t('simple_calendar.today', default: 'Today'), calendar.url_for_today_view, class: 'hover:underline' %> |
-      <%= link_to t('simple_calendar.next', default: 'Next Month'), calendar.url_for_next_view, class: 'hover:underline' %>
-    </nav>
+    <div class="flex-1 text-right">
+      <nav class="text-sm sm:text-md">
+        <%= link_to t('simple_calendar.previous', default: 'Prev Month'), calendar.url_for_previous_view, class: 'hover:underline' %> |
+        <%= link_to t('simple_calendar.today', default: 'Today'), calendar.url_for_today_view, class: 'hover:underline' %> |
+        <%= link_to t('simple_calendar.next', default: 'Next Month'), calendar.url_for_next_view, class: 'hover:underline' %>
+      </nav>
+    </div>
   </div>
 
-  <table class="table table-striped">
+  <table class="table">
     <thead>
       <tr>
         <% date_range.slice(0, 7).each do |day| %>
