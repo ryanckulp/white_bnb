@@ -31,3 +31,9 @@ plugin :tmp_restart
 
 # Only use a pidfile when requested
 pidfile ENV["PIDFILE"] if ENV["PIDFILE"]
+
+# Allow puma to be restarted by `bin/rails restart` command.
+plugin :tmp_restart
+
+# Allow tailwindcss:watch to integrate w/ "rails server", removing a separate process
+plugin :tailwindcss if ENV.fetch("RAILS_ENV", "development") == "development"
