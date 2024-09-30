@@ -1,0 +1,23 @@
+<%= render partial: "shared/heading", locals: { title: 'Addons (optional)', description: "Make the most of your visit." } %>
+
+<div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t max-w-3xl mx-auto">
+  <%= form_for('booking_addons', url: addons_path, method: 'post') do |f| %>
+    <div class="p-4 md:p-5 flex flex-col gap-2">
+      <% @addons.each do |addon| %>
+        <label for="addon-<%= addon.id %>" class="inline-flex items-center gap-8 w-full p-5 text-gray-900 bg-white has-[:checked]:bg-primary-50 has-[:checked]:border-primary-500 has-[:disabled]:bg-gray-100 has-[:disabled]:cursor-not-allowed has-[:disabled]:opacity-50 border border-gray-200 rounded-lg cursor-pointer peer-checked:border-primary-500 peer-checked:bg-primary-50 hover:text-gray-900 hover:bg-gray-100">
+          <input type="checkbox" id="addon-<%= addon.id %>" name="addons[<%= addon.id %>]" value="true"  class="size-6 rounded peer disabled:cursor-not-allowed" />
+          <div>
+            <div class="w-full text-lg font-semibold"><%= addon.title %></div>
+            <div class="w-full text-md"><%== addon.description %></div>
+            <div class="w-full text-gray-500"><%= number_to_currency(addon.price) %></div>
+          </div>
+        </label>
+      <% end %>
+
+      <div class="mt-6 flex gap-2">
+        <%= link_to "Restart", book_path, class: "w-1/3 inline-flex w-full justify-center bg-gray-100 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center" %>
+        <input type="submit" class="cursor-pointer text-white inline-flex w-2/3 justify-center bg-primary-500 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center" value="Checkout">
+      </div>
+    </div>
+  <% end %>
+</div>

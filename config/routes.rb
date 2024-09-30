@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   resources :bookings, only: [:new, :create]
   get 'book', to: 'bookings#index', as: 'book'
 
+  resources :addons, only: [:index, :create]
+
   resources :subscribe, only: [:index]
   resources :dashboard, only: [:index]
   resources :account, only: %i[index update] do
