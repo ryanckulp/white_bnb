@@ -11,7 +11,6 @@ class BookingsController < ApplicationController
     if booking.save
       create_and_sign_in_user unless current_user
       booking.update(user_id: current_user.id)
-      session[:current_booking_id] = booking.id
       status = 'created'
     else
       status = 'fail'
@@ -30,7 +29,6 @@ class BookingsController < ApplicationController
   def reset_partial_bookings
     return unless current_user
 
-    reset_current_booking
     current_user.bookings.upcoming.unpaid.destroy_all
   end
 

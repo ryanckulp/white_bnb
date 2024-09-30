@@ -1,9 +1,6 @@
 class ApplicationController < ActionController::Base
   impersonates :user
 
-  # uncomment to allow extra User model params during registration (beyond email/password)
-  # before_action :configure_permitted_parameters, if: :devise_controller?
-
   def authenticate_admin!(alert_message: nil)
     redirect_to new_user_session_path, alert: alert_message unless current_user&.admin?
   end
@@ -12,7 +9,15 @@ class ApplicationController < ActionController::Base
     resource.bookings.present? ? dashboard_index_path : book_path
   end
 
-  def reset_current_booking
-    session.delete(:current_booking_id)
+  private
+
+  def set_booking
+    @booking = current_user.current_booking
+
+    respond_to do |format|
+      # format.turbo_stream { redirect_to book_path, alert: 'Cannot choose addons without an active booking' unless @booking }
+      format.html { redirect_to book_path, alert: 'Cannot choose addons without an active booking' unless @booking }
+      format.json { render json: { status: 'fail' } unless @booking } # via PaymentsController
+    end
   end
 end

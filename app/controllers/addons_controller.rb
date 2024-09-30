@@ -20,9 +20,4 @@ class AddonsController < ApplicationController
   def addon_params
     params.fetch(:addons, {}).permit!
   end
-
-  def set_booking
-    @booking = current_user.bookings.find_by(id: session[:current_booking_id])
-    redirect_to book_path, alert: 'Cannot choose addons without an active booking' unless @booking
-  end
 end
