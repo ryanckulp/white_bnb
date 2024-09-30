@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="calendar"
 export default class extends Controller {
-  static values = { startDate: String, endDate: String }
+  static values = { startDate: String, endDate: String, pricePerNight: Number }
 
   connect() {
     this.startDateValue = localStorage.getItem('bnb_start_date');
@@ -81,6 +81,6 @@ export default class extends Controller {
 
     let timeDiff = new Date(this.endDateValue).getTime() - new Date(this.startDateValue).getTime();
     let daysDiff = Math.round(timeDiff / (1000 * 3600 * 24));
-    if (daysDiff > 0) { price_calculation.innerText = `(${daysDiff} nights * $80 /night) => $${daysDiff * 80}` };
+    if (daysDiff > 0) { price_calculation.innerText = `(${daysDiff} nights * $${this.pricePerNightValue} /night) => $${daysDiff * this.pricePerNightValue}` };
   }
 }

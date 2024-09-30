@@ -18,7 +18,7 @@
       </tr>
     </thead>
 
-    <tbody data-controller="calendar">
+    <tbody data-controller="calendar" data-calendar-price-per-night-value="<%= global_setting('per_night_price') %>">
       <% date_range.each_slice(7) do |week| %>
         <%= content_tag :tr, class: calendar.tr_classes_for(week) do %>
           <% week.each do |day| %>
