@@ -1,16 +1,6 @@
 <%= render partial: "shared/heading", locals: { title: 'My Account' } %>
 
 <div class="max-w-xl mx-auto sm:py-12">
-  <h3 class="mb-2 text-2xl leading-9 font-extrabold text-gray-900">Subscription</h3>
-  <div class="flex">
-    <div class="flex-auto">
-      Billing Status: <%= current_user.paying_customer? ? 'Active' : 'Inactive' %><br>
-    </div>
-    <div class="flex-shrink">
-      <%= button_to 'Manage >>', billing_portal_index_path, method: :post, data: { turbo: false }, class: "font-medium text-primary-500" %>
-    </div>
-  </div>
-
   <%= form_for(current_user, url: account_path(current_user.id), method: 'patch', html: {class: "mt-8", autocomplete: 'off'}) do |f| %>
     <div>
       <h3 class="mb-2 text-2xl leading-9 font-extrabold text-gray-900">Profile</h3>
