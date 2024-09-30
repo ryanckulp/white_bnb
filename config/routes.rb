@@ -26,7 +26,7 @@ Rails.application.routes.draw do
   end
 
   # admin panels
-  authenticated :user, ->(user) { user.admin? } do
+  authenticated :user, lambda(&:admin?) do
     # insert sidekiq etc
     mount Split::Dashboard, at: 'admin/split'
   end
