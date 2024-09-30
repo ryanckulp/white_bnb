@@ -99,10 +99,10 @@ RSpec.describe "Blog Posts", type: :request do
       expect(response).to redirect_to(new_user_session_path)
       follow_redirect!
 
-      expect(response).to redirect_to(subscribe_index_path)
+      expect(response).to redirect_to(dashboard_index_path)
       follow_redirect!
 
-      expect(response.body).to include('Subscribe')
+      expect(response.body).to include('Dashboard')
     end
 
     it "does not create a blog post with invalid attributes" do
@@ -203,9 +203,9 @@ RSpec.describe "Blog Posts", type: :request do
       end.to change(BlogPost, :count).by(0)
 
       follow_redirect! # to login page
-      follow_redirect! # to subscribe page, since user is already logged in
+      follow_redirect! # to dashboard page, since user is already logged in
 
-      expect(response.body).to include('Subscribe')
+      expect(response.body).to include('Dashboard')
     end
 
     it "does not destroy a blog post as guest visitor" do
