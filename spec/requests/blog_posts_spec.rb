@@ -99,10 +99,10 @@ RSpec.describe "Blog Posts", type: :request do
       expect(response).to redirect_to(new_user_session_path)
       follow_redirect!
 
-      expect(response).to redirect_to(dashboard_index_path)
+      expect(response).to redirect_to(book_path)
       follow_redirect!
 
-      expect(response.body).to include('Dashboard')
+      expect(response.body).to include('Book')
     end
 
     it "does not create a blog post with invalid attributes" do
