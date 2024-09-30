@@ -1,6 +1,6 @@
 class Booking < ApplicationRecord
   has_rich_text :notes
-  belongs_to :user
+  belongs_to :user, optional: true
 
   validates :start_date, :end_date, presence: true
 

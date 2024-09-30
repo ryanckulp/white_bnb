@@ -8,6 +8,6 @@ RSpec.describe Booking, type: :model do
   end
 
   describe 'ActiveModel associations' do
-    it { expect(subject).to belong_to(:user) }
+    it { expect(subject).to belong_to(:user).without_validating_presence }
   end
 end
