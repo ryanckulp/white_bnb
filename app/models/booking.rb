@@ -4,6 +4,11 @@ class Booking < ApplicationRecord
 
   validates :start_date, :end_date, presence: true
 
+  has_many :booking_addons, dependent: :destroy
+
+  scope :upcoming, -> { where('end_date >= ?', Date.today) }
+  scope :unpaid, -> { where(stripe_payment_id: nil) }
+
   def self.ransackable_associations(*)
     ["rich_text_notes", "user"]
   end

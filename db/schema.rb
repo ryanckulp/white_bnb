@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2024_09_30_014837) do
+ActiveRecord::Schema[8.0].define(version: 2024_09_30_025847) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -67,6 +67,13 @@ ActiveRecord::Schema[8.0].define(version: 2024_09_30_014837) do
     t.boolean "draft", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "booking_addons", force: :cascade do |t|
+    t.bigint "booking_id", null: false
+    t.bigint "addon_id", null: false
+    t.index ["addon_id"], name: "index_booking_addons_on_addon_id"
+    t.index ["booking_id"], name: "index_booking_addons_on_booking_id"
   end
 
   create_table "bookings", force: :cascade do |t|
@@ -139,5 +146,7 @@ ActiveRecord::Schema[8.0].define(version: 2024_09_30_014837) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "booking_addons", "addons"
+  add_foreign_key "booking_addons", "bookings"
   add_foreign_key "bookings", "users"
 end
