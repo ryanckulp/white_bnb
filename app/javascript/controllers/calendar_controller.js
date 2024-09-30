@@ -40,7 +40,6 @@ export default class extends Controller {
         document.getElementById(d).classList.add('bg-green-300')
       }
     })
-    // debugger;
   }
 
   betweenDates(startDate, endDate, steps = 1) {
@@ -58,6 +57,12 @@ export default class extends Controller {
 
   saveDate() {
     this.resetStartEnd();
+
+    if (Array.from(event.currentTarget.classList).includes('has-events')) {
+      this.resetStartEnd()
+      alert('Cannot select a date that is already booked')
+      return;
+    }
 
     let day = event.currentTarget.id;
     let dates = [new Date(day), new Date(this.startDateValue), new Date(this.endDateValue)].filter(Boolean).filter(d => !isNaN(d));
