@@ -11,17 +11,19 @@ Rails.application.routes.draw do
 
   resources :addons, only: [:index, :create]
 
-  resources :subscribe, only: [:index]
+  resources :checkout, only: [:index]
   resources :dashboard, only: [:index]
   resources :account, only: %i[index update] do
     get :stop_impersonating, on: :collection
   end
-  resources :billing_portal, only: [:new, :create]
+  resources :payments, only: [:create] do
+    get 'confirm', on: :collection
+  end
   resources :blog_posts, path: 'blog', param: :slug
 
   # static pages
   pages = %w[
-    privacy terms
+    thanks privacy terms
   ]
 
   pages.each do |page|
