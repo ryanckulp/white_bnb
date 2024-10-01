@@ -21,7 +21,7 @@ module Billable
   end
 
   def update_stripe_customer
-    return unless stripe_customer
+    return unless stripe_customer_id
 
     # assign other attributes as desired
     Stripe::Customer.update(stripe_customer_id, { email: self.email })
