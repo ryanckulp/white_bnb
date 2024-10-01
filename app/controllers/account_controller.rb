@@ -6,8 +6,12 @@ class AccountController < ApplicationController
 
   def update
     current_user.update(account_update_params)
-    sign_in(current_user, bypass: true) # prevents user from needing to log back in
-    redirect_to account_index_path, notice: 'Profile updated successfully'
+    bypass_sign_in(current_user) # prevents user from needing to log back in
+
+    respond_to do |format|
+      format.html { redirect_to account_index_path, notice: 'Profile updated successfully' }
+      format.json { render json: { email: current_user.email } } # via CheckoutsController#index
+    end
   end
 
   def stop_impersonating
