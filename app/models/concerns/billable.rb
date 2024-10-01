@@ -23,9 +23,8 @@ module Billable
   def update_stripe_customer
     return unless stripe_customer
 
-    # assign useful attributes
-    stripe_customer.email = self.email
-    stripe_customer.save
+    # assign other attributes as desired
+    Stripe::Customer.update(stripe_customer_id, { email: self.email })
   end
 
   def stripe_customer
