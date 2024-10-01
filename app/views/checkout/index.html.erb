@@ -1,69 +1,29 @@
 <%= render partial: "shared/heading", locals: { title: 'Checkout', description: "Provide payment details to complete your booking." } %>
 
 <section class="max-w-3xl mt-6 sm:mt-12 mx-auto space-y-4">
+  <div class="mb-6">
+    <label for="email" class="block" style="margin-bottom: 0.25rem; font-size: 0.93rem; color: #30313d;">Email</label>
+    <input type="hidden" name="csrf-token" value="<%= form_authenticity_token %>">
+    <input type="email" required="true" name="user[email]" id="user_email" class="block w-full border-0 p-0 text-gray-900 placeholder-gray-500 focus:ring-0 sm:text-sm" style="padding: 1rem; background: #f1f1f1; border-radius: 14px" placeholder="<%= current_user.email %>">
+    <p id="email_error" class="hidden" style="color: #df1b41; margin-top: 0.25rem; font-size: 0.93rem;">Email must be valid.</p>
+  </div>
+
   <div id="payment-element" class="">
     <!-- Stripe will insert the payment form here -->
   </div>
 
   <div class="text-right">
-    <button id="pay_btn" class="hidden bg-blue-500 px-4 py-2 text-white text-lg rounded-md" onclick="submit()">Pay <span id="amount"></span> Now</button>
+    <button id="submit" class="bg-blue-500 px-4 py-2 text-white text-lg rounded-md" onclick="submit()">Pay <span id="amount"></span> Now</button>
+
+    <button id="submit_loading" class="hidden bg-blue-500 px-4 py-2 text-white text-lg rounded-md">
+      <div class="inline">
+        Loading
+      </div>
+      <div id="spinner" class="inline"></div>
+    </button>
+
     <span id="summary" class="hidden block"><span id="nights"></span> <span id="addon_fees"></span></span>
   </div>
 </section>
 
-<script src="" async="true"></script>
-<script type="text/javascript">
-  var stripe, secret, elements;
-
-document.addEventListener("turbo:load", () => {
-  let stripeScript = document.createElement('script');
-  stripeScript.src = "https://js.stripe.com/v3/";
-  stripeScript.onload = function() {
-    initialize();
-    stripe = Stripe('<%= Rails.application.credentials.stripe&.publishable_key || '' %>');
-  };
-  document.getElementsByTagName('head')[0].appendChild(stripeScript);
-
-  async function initialize() {
-    const response = await fetch("/payments.json", {
-      method: 'POST'
-    });
-
-    const { clientSecret, amount, nights, addonFees } = await response.json();
-    secret = clientSecret;
-
-    if (clientSecret == null) {
-      window.location.href = '<%= book_path %>'; // will happen if user visits /checkout without an active booking
-    }
-
-    // mount payment form with theme options
-    const appearance = { theme: 'flat',   variables: { colorPrimaryText: '#262626' } };
-    const options = { business: { name: 'Kulp Estates' } };
-    elements = stripe.elements({ clientSecret, appearance });
-    const paymentElement = elements.create('payment', options);
-    paymentElement.mount('#payment-element');
-
-    // show submit button and booking summary
-    document.getElementById('amount').innerText = `$${amount.toLocaleString('en-US')}`
-    document.getElementById('nights').innerText = `${nights} nights * <%= number_to_currency(Setting.per_night_price) %> /night,`
-    document.getElementById('addon_fees').innerText = `$${addonFees} in add-ons`
-
-    pay_btn.classList.remove('hidden');
-    summary.classList.remove('hidden')
-  }
-})
-
-async function submit() {
-  event.preventDefault();
-
-  if (!stripe) {
-    return;
-  }
-
-  const {error} = await stripe.confirmPayment({elements, secret, confirmParams: { return_url: "<%= confirm_payments_url %>" }})
-
-  if (error) {
-    handleError(error);
-  }
-}
-</script>
+<%= render "stripe_js" %>
