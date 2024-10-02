@@ -1,10 +1,10 @@
 class AddonsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_booking
+  before_action :set_addons
 
   def index
-    @addons = Addon.all
-    redirect_to checkout_index_path unless @addons.present? # optional feature
+    @booking.booking_addons.destroy_all # reset in case user comes back from Checkout
   end
 
   def create
@@ -20,5 +20,10 @@ class AddonsController < ApplicationController
 
   def addon_params
     params.fetch(:addons, {}).permit!
+  end
+
+  def set_addons
+    @addons = Addon.all
+    redirect_to checkout_index_path unless @addons.present? # optional feature
   end
 end

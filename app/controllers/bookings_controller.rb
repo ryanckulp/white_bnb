@@ -1,5 +1,5 @@
 class BookingsController < ApplicationController
-  before_action :reset_partial_bookings
+  before_action :reset_partial_booking
 
   def index
     @bookings = Booking.upcoming # including paid/unpaid to avoid double booking (ex: if 2 users attempt to book same dates)
@@ -26,7 +26,7 @@ class BookingsController < ApplicationController
   end
 
   # ex: user visits /addons, then decides to restart booking process
-  def reset_partial_bookings
+  def reset_partial_booking
     return unless current_user
 
     current_user.bookings.upcoming.unpaid.destroy_all
