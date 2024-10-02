@@ -6,6 +6,6 @@ feature 'Login', js: true do
   scenario 'Login should work' do
     user = create(:user)
     login(user)
-    expect(page.text).to include('Dashboard')
+    expect(page.text).to include('Reservations')
   end
 end

@@ -205,7 +205,7 @@ RSpec.describe "Blog Posts", type: :request do
       follow_redirect! # to login page
       follow_redirect! # to dashboard page, since user is already logged in
 
-      expect(response.body).to include('Dashboard')
+      expect(response.body).to include('Reservtions')
     end
 
     it "does not destroy a blog post as guest visitor" do
