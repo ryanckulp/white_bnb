@@ -104,7 +104,8 @@ export default class extends Controller {
       if (json.status == 'created') {
         window.location.href = '/addons'
       } else {
-        alert('Something went wrong, please try again')
+        alert(json.message.join(', '));
+        window.location.reload();
       }
     });
   }
