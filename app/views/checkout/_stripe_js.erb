@@ -34,8 +34,8 @@ document.addEventListener("turbo:load", () => {
     document.getElementById('nights').innerText = `${nights} nights * <%= number_to_currency(Setting.per_night_price) %> /night,`
     document.getElementById('addon_fees').innerText = `$${addonFees} in add-ons`
 
-    submit.classList.remove('hidden');
-    summary.classList.remove('hidden')
+    document.getElementById('submit').classList.remove('hidden');
+    document.getElementById('summary').classList.remove('hidden');
   }
 })
 
