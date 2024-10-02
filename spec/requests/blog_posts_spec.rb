@@ -203,9 +203,10 @@ RSpec.describe "Blog Posts", type: :request do
       end.to change(BlogPost, :count).by(0)
 
       follow_redirect! # to login page
-      follow_redirect! # to dashboard page, since user is already logged in
+      follow_redirect! # to booking page, since user is logged in but has no reservations
 
-      expect(response.body).to include('Reservtions')
+      expect(response.body).to include('Select dates')
+      expect(response.body).to include(Date.today.strftime('%B'))
     end
 
     it "does not destroy a blog post as guest visitor" do
