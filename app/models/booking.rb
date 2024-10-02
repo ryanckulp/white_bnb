@@ -3,11 +3,13 @@ class Booking < ApplicationRecord
   belongs_to :user, optional: true
 
   validates :start_date, :end_date, presence: true
-  validate :dates_dont_overlap
+  validate :dates_dont_overlap, on: :create
 
   has_many :booking_addons, dependent: :destroy
 
   scope :upcoming, -> { where('end_date >= ?', Date.today) }
+  scope :past, -> { where('end_date <= ?', Date.today) }
+  scope :paid, -> { where.not(stripe_payment_id: nil) }
   scope :unpaid, -> { where(stripe_payment_id: nil) }
 
   def dates_dont_overlap
@@ -23,6 +25,10 @@ class Booking < ApplicationRecord
 
   def addon_fees
     booking_addons.sum { |ba| ba.addon.price }.to_f
+  end
+
+  def addon_titles
+    booking_addons.map(&:addon).map(&:title).join(', ')
   end
 
   def payment
