@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
-    resource.bookings.present? ? dashboard_index_path : book_path
+    resource.bookings.paid.exists? ? dashboard_index_path : book_path
   end
 
   private

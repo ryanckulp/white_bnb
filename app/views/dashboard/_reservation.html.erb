@@ -1,0 +1,24 @@
+<% past ||= false %>
+
+<div class="border border-dashed border-2 p-4 flex mb-4">
+  <div>
+    <h2 class="text-xl font-medium"><%= booking.start_date.strftime('%B %d') %> - <%= booking.end_date.strftime('%B %d, %Y') %></h2>
+    <p>Addons: <%= booking.addon_titles %></p>
+    <p>Total: <%= number_to_currency(booking.total_amount) %></p>
+
+    <% unless past %>
+      <p class="font-bold pt-4">Resources</p>
+      <p>Check in: <%= booking.start_date.strftime('%A') %> @ <%= Setting.lookup('check_in_time') %></p>
+      <p>Check out: <%= booking.end_date.strftime('%A') %> @ <%= Setting.lookup('check_out_time') %></p>
+      <p>Host phone: <%= Setting.lookup('host_phone_number') %></p>
+      <p>Host email: <%= Setting.lookup('host_email') %></p>
+    <% end %>
+  </div>
+  <div class="text-right flex-1 relative">
+    <%= link_to "mailto:#{Setting.lookup('host_email')}", title: Setting.lookup('host_email'), target: :_blank do %>
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-10 absolute right-0">
+        <path stroke-linecap="round" stroke-linejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L6.832 19.82a4.5 4.5 0 0 1-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 0 1 1.13-1.897L16.863 4.487Zm0 0L19.5 7.125" />
+      </svg>
+    <% end %>
+  </div>
+</div>

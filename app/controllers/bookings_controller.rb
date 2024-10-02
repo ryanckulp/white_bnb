@@ -13,10 +13,10 @@ class BookingsController < ApplicationController
       booking.update(user_id: current_user.id)
       status = 'created'
     else
-      status = 'fail'
+      message = booking.errors.full_messages
     end
 
-    render json: { status: status }
+    render json: { status: status, message: message }
   end
 
   private

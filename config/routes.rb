@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   resources :addons, only: [:index, :create]
 
   resources :checkout, only: [:index]
-  resources :dashboard, only: [:index]
+  resources :dashboard, only: [:index], path: 'reservations'
   resources :account, only: %i[index update] do
     get :stop_impersonating, on: :collection
   end

@@ -6,6 +6,10 @@ class Setting < ApplicationRecord
     (find_by_key('per_night_price')&.value || 0).to_f
   end
 
+  def self.lookup(key)
+    find_by_key(key)&.value
+  end
+
   # :nocov:
   def self.ransackable_attributes(*)
     ["created_at", "id", "id_value", "key", "updated_at", "value"]
