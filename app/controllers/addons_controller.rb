@@ -4,6 +4,7 @@ class AddonsController < ApplicationController
 
   def index
     @addons = Addon.all
+    redirect_to checkout_index_path unless @addons.present? # optional feature
   end
 
   def create
