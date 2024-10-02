@@ -1,0 +1,31 @@
+<div class="max-w-3xl mx-auto py-12">
+  <p class="text-lg">
+    <strong><%= Rails.application.credentials.company_name %></strong> updates are documented in accordance with <%= link_to 'semantic versioning', 'https://en.wikipedia.org/wiki/Software_versioning#Semantic_versioning', class: 'text-primary-500', target: :_blank %>.
+  </p>
+  <hr>
+
+  <div class="relative rounded-lg mb-8 mt-8">
+    <h3 class="text-lg font-bold mb-4" id='oct1'>October 1, 2024</h3>
+    <p class="mb-2">
+      title
+    </p>
+    <p class="mb-2">
+      description
+    </p>
+  </div>
+
+  <div class="relative rounded-lg mb-8 mt-8">
+    <h3 class="text-lg font-bold mb-4" id='sep30'>September 30, 2024</h3>
+    <p class="mb-2">
+      description with <%= link_to 'link', '#', class: 'text-primary-500', target: :_blank %>.
+    </p>
+  </div>
+
+  <div class="relative rounded-lg mb-8 mt-8">
+    <h3 class="text-lg font-bold mb-4" id='may17'>September 25, 2024</h3>
+    <p class="mb-2">
+      some image
+      <%= image_tag '/icon.png', class: 'w-40 mt-2' %>
+    </p>
+  </div>
+</div>

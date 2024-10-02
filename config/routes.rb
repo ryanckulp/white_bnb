@@ -23,7 +23,7 @@ Rails.application.routes.draw do
 
   # static pages
   pages = %w[
-    thanks privacy terms
+    changelog thanks privacy terms
   ]
 
   pages.each do |page|
