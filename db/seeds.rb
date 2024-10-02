@@ -5,8 +5,12 @@ raise StandardError, "DO NOT RUN THIS IN PRODUCTION" if Rails.env.production?
 
 puts "creating default Settings..."
 settings = [
+  { key: 'host_phone_number', value: '+1 555-867-5309' },
+  { key: 'host_email', value: 'hq@founderhacker.com' },
   { key: 'per_night_price', value: 130 },
-  { key: 'minimum_nights', value: 4 } # TODO: enforce this logic on /book
+  { key: 'minimum_nights', value: 4 }, # TODO: enforce this logic on /book
+  { key: 'check_in_time', value: '12pm' },
+  { key: 'check_out_time', value: '12pm' }
 ]
 
 settings.each { |setting| Setting.find_or_create_by(setting) }
