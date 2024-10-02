@@ -1,1 +1,13 @@
 <%= render partial: "shared/heading", locals: { title: 'Thank you!', description: "Stay tuned for an email soon with next steps about your stay." } %>
+
+<div class="max-w-3xl mx-auto text-center">
+  Redirecting to dashboard...
+</div>
+
+<script type="text/javascript">
+// optional: put conversion tracking script here
+
+setTimeout(function(){
+  window.location.href = '<%= dashboard_index_path %>';
+}, 3000)
+</script>
