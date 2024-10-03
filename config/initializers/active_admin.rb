@@ -4,7 +4,7 @@ ActiveAdmin.setup do |config|
   # Set the title that is displayed on the main layout
   # for each of the active admin pages.
   #
-  config.site_title = "WhiteBnb"
+  config.site_title = Rails.application.credentials.company_name
 
   # == Load Paths
   #
