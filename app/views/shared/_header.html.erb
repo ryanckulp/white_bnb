@@ -19,13 +19,12 @@
       <div class="text-sm sm:flex-grow">
         <%= link_to 'Admin', admin_root_path, class: nav_link_classes('admin/dashboard') if current_user&.admin? %>
 
-        <%= link_to 'Blog', blog_posts_path, class: nav_link_classes('blog') %>
+        <%= link_to 'Changelog', changelog_path, class: nav_link_classes('changelog') %>
 
         <% if current_user %>
           <%= link_to 'Reservations', dashboard_index_path, class: nav_link_classes('reservations') if current_user.bookings.paid.exists? %>
           <%= link_to 'Account', account_index_path, class: nav_link_classes('account') %>
         <% else %>
-          <%= link_to 'Contact', "mailto:#{Rails.application.credentials.admin_email}", target: '_blank', class: nav_link_classes('contact')  %>
           <%= link_to 'Login', new_user_session_path, class: nav_link_classes('login') %>
         <% end %>
         <%= link_to 'Book Now', book_path, class: nav_link_classes('book') %>

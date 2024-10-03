@@ -1,4 +1,4 @@
-<%= render partial: "shared/heading", locals: { title: 'Book', description: "Select dates for your stay at the Hacker House." } %>
+<%= render partial: "shared/heading", locals: { title: 'Book', description: "Select dates for your stay at the #{Rails.application.credentials.company_name}." } %>
 
 <section data-controller="calendar" data-calendar-price-per-night-value="<%= Setting.per_night_price %>">
   <%= turbo_frame_tag 'calendar' do %>
