@@ -74,7 +74,7 @@ RSpec.configure do |config|
   config.before(:each) do
     allow(Rails.application.credentials).to receive(:base_url).and_return('https://whitebnb.com')
     allow(Rails.application.credentials).to receive(:stripe).and_return(OpenStruct.new(api_key: 'sk_asdf', publishable_key: 'pk_asdf', product_price_id: 'pi_asdf'))
-    allow_any_instance_of(PaymentsController).to receive(:create_payment_intent).and_return({ client_secret: 'qwerty' }.to_json)
+    allow_any_instance_of(PaymentsController).to receive(:create).and_return({ client_secret: 'qwerty' }.to_json)
   end
 
   # You can uncomment this line to turn off ActiveRecord support entirely.
