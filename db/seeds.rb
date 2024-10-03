@@ -17,8 +17,9 @@ settings.each { |setting| Setting.find_or_create_by(setting) }
 
 puts "creating default Add-ons..."
 addons = [
-  { title: 'Consulting Session (Ruby on Rails only)', description: "Pair program, fix bugs, architect features.<br>Two hour block.", price: 199 },
-  { title: 'Airport Shuttle', description: 'Round trip transportation by me (Ryan, host), a 50% savings on Uber.', price: 99 }
+  { title: 'Pair Program (Ruby or JavaScript)', description: "Build features, fix bugs, model databases.<br>Two hour block.", price: 199 },
+  { title: 'Brainstorm Session (Product)', description: "Scope a project, customer development, marketing brainstorm, etc.<br>Two hour block.", price: 299 },
+  { title: 'Airport Shuttle', description: 'Round trip transportation by me (Ryan, host), a 60% savings on Uber.', price: 99 }
 ]
 
 addons.each { |addon| Addon.find_or_create_by(addon) }
