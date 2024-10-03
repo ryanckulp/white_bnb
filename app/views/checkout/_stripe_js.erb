@@ -11,15 +11,27 @@ document.addEventListener("turbo:load", () => {
   document.getElementsByTagName('head')[0].appendChild(stripeScript);
 
   async function initialize() {
-    const response = await fetch("/payments.json", {
-      method: 'POST'
+    const response = await fetch("/payments.json?coupon=<%= params[:coupon] %>", {
+      method: 'POST',
+      headers: {
+        'X-CSRF-Token': '<%= form_authenticity_token %>'
+      }
     });
 
-    const { clientSecret, amount, nights, addonFees } = await response.json();
+    const { clientSecret, amount, nights, addonFees, couponAmount } = await response.json();
     secret = clientSecret;
 
     if (clientSecret == null) {
       window.location.href = '<%= book_path %>'; // will happen if user visits /checkout without an active booking
+    }
+
+    // handle coupon inputs
+    if (couponAmount > 0) {
+      document.getElementById('coupon_amount').innerText = `, -$${couponAmount} in discounts`
+    }
+
+    if (<%= params[:coupon].present? %> && couponAmount == 0) {
+      document.getElementById('coupon_error').classList.remove('hidden');
     }
 
     // mount payment form with theme options
@@ -71,6 +83,13 @@ async function submit() {
     setLoading(false);
     console.log(error)
   }
+}
+
+function applyCoupon() {
+  setLoading(true);
+
+  let coupon = document.getElementById('coupon_code').value;
+  window.location.href = `/checkout?coupon=${coupon}`;
 }
 
 function setLoading(isLoading) {

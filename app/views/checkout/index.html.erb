@@ -8,6 +8,17 @@
     <p id="email_error" class="hidden" style="color: #df1b41; margin-top: 0.25rem; font-size: 0.93rem;">Email must be valid.</p>
   </div>
 
+  <div class="mb-6">
+    <label for="coupon_code" class="block" style="margin-bottom: 0.25rem; font-size: 0.93rem; color: #30313d;">Coupon</label>
+    <div class="relative">
+      <input type="search" id="coupon_code" class="border-0 p-0 text-gray-900 placeholder-gray-500 focus:ring-0 sm:text-sm w-full p-4 ps-10" style="padding: 1rem; background: #f1f1f1; border-radius: 14px" placeholder="10PCTOFF" value="<%= params[:coupon] %>" />
+      <button type="submit" onclick="applyCoupon()" class="text-white absolute end-2.5 bottom-2.5 bg-blue-500 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2">
+        Apply
+      </button>
+    </div>
+    <p id="coupon_error" class="hidden" style="color: #df1b41; margin-top: 0.25rem; font-size: 0.93rem;">Coupon does not exist, nice try.</p>
+  </div>
+
   <div id="payment-element" class="">
     <!-- Stripe will insert the payment form here -->
   </div>
@@ -22,7 +33,7 @@
       <div id="spinner" class="inline"></div>
     </button>
 
-    <span id="summary" class="hidden block"><span id="nights"></span> <span id="addon_fees"></span></span>
+    <span id="summary" class="hidden block"><span id="nights"></span> <span id="addon_fees"></span><span id="coupon_amount"></span></span>
   </div>
 </section>
 
