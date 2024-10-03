@@ -2,15 +2,8 @@ module Onboardable
   extend ActiveSupport::Concern
 
   included do
-    # after_create :send_welcome_email
+    def self.create_guest
+      create!(email: "guest-#{Time.now.to_i}@#{Rails.application.credentials.company_name.parameterize}.com", password: SecureRandom.hex(10))
+    end
   end
-
-  def finished_onboarding?
-    stripe_subscription_id?
-  end
-
-  def send_welcome_email
-    UserMailer.welcome(self).deliver
-  end
-  # handle_asynchronously :send_welcome_email
 end

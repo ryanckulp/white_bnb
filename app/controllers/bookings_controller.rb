@@ -33,7 +33,7 @@ class BookingsController < ApplicationController
   end
 
   def create_and_sign_in_user
-    user = User.create!(email: "guest-#{Time.now.to_i}@#{Rails.application.credentials.company_name.parameterize}.com", password: SecureRandom.hex(10))
+    user = User.create_guest
     sign_in(user)
   end
 end
