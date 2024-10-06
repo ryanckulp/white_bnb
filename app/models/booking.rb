@@ -31,10 +31,6 @@ class Booking < ApplicationRecord
     booking_addons.map(&:addon).map(&:title).join(', ')
   end
 
-  def payment
-    Stripe::PaymentIntent.retrieve(stripe_payment_id)
-  end
-
   def total_amount
     ((nights * Setting.per_night_price) + addon_fees).to_i # must be integer
   end

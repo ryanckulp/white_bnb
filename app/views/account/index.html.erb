@@ -2,10 +2,12 @@
 
 <div class="max-w-xl mx-auto sm:py-12">
   <%= form_for(current_user, url: account_path(current_user.id), method: 'patch', html: {class: "mt-8", autocomplete: 'off'}) do |f| %>
+    <%= render "devise/shared/error_messages", resource: current_user %>
+
     <div>
       <div class="mb-2 border border-gray-300 rounded-md px-3 py-2">
         <label for="email" class="block text-xs font-medium text-gray-900">Email</label>
-        <input type="text" required="true" name="user[email]" id="user_email" class="block w-full border-0 p-0 text-gray-900 placeholder-gray-500 focus:ring-0 sm:text-sm" placeholder="<%= current_user.email %>">
+        <input type="text" required="true" name="user[email]" id="user_email" class="block w-full border-0 p-0 text-gray-900 placeholder-gray-500 focus:ring-0 sm:text-sm" value="<%= current_user.email %>" placeholder="monk@gmail.com">
       </div>
 
       <div class="mb-2 border border-gray-300 rounded-md px-3 py-2">
