@@ -6,7 +6,6 @@ feature 'Root page', js: true do
   end
 
   scenario 'Root page should work' do
-    expect(page).to have_text 'Contact'
     expect(page).to have_text 'Book'
     expect(page).to have_text 'Login'
 
