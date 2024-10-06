@@ -5,7 +5,7 @@
     <label for="email" class="block" style="margin-bottom: 0.25rem; font-size: 0.93rem; color: #30313d;">Email</label>
     <input type="hidden" name="csrf-token" value="<%= form_authenticity_token %>">
     <input type="email" required="true" name="user[email]" id="user_email" class="block w-full border-0 p-0 text-gray-900 placeholder-gray-500 focus:ring-0 sm:text-sm" style="padding: 1rem; background: #f1f1f1; border-radius: 14px" value="<%= current_user.email %>" placeholder="monk@gmail.com">
-    <p id="email_error" class="hidden" style="color: #df1b41; margin-top: 0.25rem; font-size: 0.93rem;">Email must be valid.</p>
+    <p id="email_error" class="hidden" style="color: #df1b41; margin-top: 0.25rem; font-size: 0.93rem;">Email is invalid or already exists.</p>
   </div>
 
   <div class="mb-6">

@@ -60,7 +60,7 @@ async function submit() {
   event.preventDefault();
   setLoading(true);
 
-  if (user_email.checkValidity()) {
+  if (user_email.checkValidity() && !user_email.value.includes('<%= User.guest_email_domain %>')) {
     fetch("<%= account_path(current_user.id, format: :json) %>", {
       method: 'PATCH',
       headers: {
@@ -68,6 +68,15 @@ async function submit() {
         'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').content
       },
       body: JSON.stringify({ user: { email: user_email.value } })
+    })
+    .then(response => response.json())
+    .then(json => {
+      console.log('server json', json);
+      if (json.error) {
+        email_error.classList.remove('hidden');
+        setLoading(false);
+        return;
+      }
     })
   } else {
     email_error.classList.remove('hidden');
@@ -84,10 +93,11 @@ async function submit() {
 
   let confirmationParams = {elements, secret, confirmParams: { return_url: "<%= confirm_payments_url %>" }}
 
+  let error;
   if (intent == 'payment') {
-    const {error} = await stripe.confirmPayment(confirmationParams)
+    error = await stripe.confirmPayment(confirmationParams)
   } else if (intent == 'setup') {
-    const {error} = await stripe.confirmSetup(confirmationParams)
+    error = await stripe.confirmSetup(confirmationParams)
   }
 
   // not particularly useful, Stripe form already validates inline

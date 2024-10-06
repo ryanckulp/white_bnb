@@ -4,12 +4,19 @@ class AccountController < ApplicationController
   def index; end
 
   def update
-    current_user.update(account_update_params)
-    bypass_sign_in(current_user) # prevents user from needing to log back in
+    if current_user.update(account_update_params)
+      bypass_sign_in(current_user) # prevents user from needing to log back in
+      updated = true
+    end
 
     respond_to do |format|
-      format.html { redirect_to account_index_path, notice: 'Profile updated successfully' }
-      format.json { render json: { email: current_user.email } } # via CheckoutsController#index
+      if updated
+        format.html { redirect_to account_index_path, notice: 'Profile updated successfully' }
+        format.json { render json: { email: current_user.email } } # via CheckoutsController#index
+      else
+        format.html { render :index, status: :unprocessable_entity }
+        format.json { render json: { email: current_user.reload.email, error: true } }
+      end
     end
   end
 
