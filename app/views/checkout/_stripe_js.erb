@@ -1,5 +1,5 @@
 <script type="text/javascript">
-var stripe, secret, elements;
+var stripe, secret, intent, elements;
 
 document.addEventListener("turbo:load", () => {
   let stripeScript = document.createElement('script');
@@ -18,8 +18,9 @@ document.addEventListener("turbo:load", () => {
       }
     });
 
-    const { clientSecret, amount, nights, addonFees, couponAmount } = await response.json();
+    var { clientSecret, intentType, amount, nights, addonFees, couponAmount } = await response.json();
     secret = clientSecret;
+    intent = intentType;
 
     if (clientSecret == null) {
       window.location.href = '<%= book_path %>'; // will happen if user visits /checkout without an active booking
@@ -30,13 +31,17 @@ document.addEventListener("turbo:load", () => {
       document.getElementById('coupon_amount').innerText = `, -$${couponAmount} in discounts`
     }
 
+    if (amount <= 0) {
+      amount = 0; // don't show negative amount owed, e.g. if coupon is $500, booking is $400
+    }
+
     if (<%= params[:coupon].present? %> && couponAmount == 0) {
       document.getElementById('coupon_error').classList.remove('hidden');
     }
 
     // mount payment form with theme options
     const appearance = { theme: 'flat',   variables: { colorPrimaryText: '#262626' } };
-    const options = { business: { name: 'Kulp Estates' } };
+    const options = { business: { name: '<%= Rails.application.credentials.company_name %>' } };
     elements = stripe.elements({ clientSecret, appearance });
     const paymentElement = elements.create('payment', options);
     paymentElement.mount('#payment-element');
@@ -56,7 +61,7 @@ async function submit() {
   setLoading(true);
 
   if (user_email.checkValidity()) {
-    fetch("<%= account_path(current_user.id) %>", {
+    fetch("<%= account_path(current_user.id, format: :json) %>", {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
@@ -76,7 +81,14 @@ async function submit() {
   }
 
   email_error.classList.add('hidden');
-  const {error} = await stripe.confirmPayment({elements, secret, confirmParams: { return_url: "<%= confirm_payments_url %>" }})
+
+  let confirmationParams = {elements, secret, confirmParams: { return_url: "<%= confirm_payments_url %>" }}
+
+  if (intent == 'payment') {
+    const {error} = await stripe.confirmPayment(confirmationParams)
+  } else if (intent == 'setup') {
+    const {error} = await stripe.confirmSetup(confirmationParams)
+  }
 
   // not particularly useful, Stripe form already validates inline
   if (error) {
