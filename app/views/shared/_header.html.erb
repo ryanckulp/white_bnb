@@ -1,10 +1,10 @@
-<header class="py-4 px-2" data-controller="header">
+<header class="pt-5 pb-3 px-8 max-w-8xl mx-auto bg-gray-950 shadow-xl" data-controller="header">
   <nav class="flex items-center justify-between flex-wrap">
     <div class="flex items-center flex-no-shrink text-white mr-6">
       <% logo_path = current_user ? dashboard_index_path : root_path %>
       <%= link_to logo_path, class:"flex items-center hover:opacity-80" do %>
-        <%= image_tag "avatar.png",  style: "max-height: 42px" %>
-        <span class="font-semibold text-xl tracking-tight text-primary-600"><%= Rails.application.credentials.company_name %></span>
+        <%= image_tag "logo.svg",  class:"h-9 mb-1" %>
+        <span class="font-semibold ml-2 font-heading text-2xl tracking-tight text-primary-100 uppercase"><%= Rails.application.credentials.company_name %></span>
       <% end %>
     </div>
     <div class="block sm:hidden">
@@ -15,7 +15,7 @@
       </button>
     </div>
 
-    <div id="main-nav" class="w-full flex-grow sm:flex text-right sm:w-auto hidden" data-header-target="mainNav">
+    <div id="main-nav" class="w-full flex-grow sm:flex text-gray-100 text-right sm:w-auto hidden" data-header-target="mainNav">
       <div class="text-sm sm:flex-grow">
         <%= link_to 'Admin', admin_root_path, class: nav_link_classes('admin/dashboard') if current_user&.admin? %>
 
