@@ -11,6 +11,7 @@ class Booking < ApplicationRecord
   scope :past, -> { where('end_date <= ?', Date.today) }
   scope :paid, -> { where.not(stripe_payment_id: nil) }
   scope :unpaid, -> { where(stripe_payment_id: nil) }
+  scope :stale, -> { upcoming.unpaid }
 
   def dates_dont_overlap
     # IDEA: support back-to-back bookings (where start_date for a booking == end_date for another booking)

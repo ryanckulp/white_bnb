@@ -1,5 +1,5 @@
 class BookingsController < ApplicationController
-  before_action :reset_partial_booking
+  before_action :clear_stale_bookings
 
   def index
     @bookings = Booking.upcoming # including paid/unpaid to avoid double booking (ex: if 2 users attempt to book same dates)
@@ -25,11 +25,9 @@ class BookingsController < ApplicationController
     params.require(:booking).permit(:start_date, :end_date)
   end
 
-  # ex: user visits /addons, then decides to restart booking process
-  def reset_partial_booking
-    return unless current_user
-
-    current_user.bookings.upcoming.unpaid.destroy_all
+  def clear_stale_bookings
+    Booking.stale.where(created_at: 7.days.ago..1.hour.ago).destroy_all # abandoned cart
+    current_user.bookings.stale.destroy_all if current_user # user restarts process
   end
 
   def create_and_sign_in_user
