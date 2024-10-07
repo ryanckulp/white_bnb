@@ -1,6 +1,8 @@
 # WhiteBnb
 a simple property booking platform for branded destinations. #airbnbsucks
 
+demo: https://hh.ryanckulp.com
+
 ## Installation
 1. `bin/setup`
 
