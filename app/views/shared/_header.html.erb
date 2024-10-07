@@ -1,4 +1,4 @@
-<header class="pt-5 pb-3 px-8 max-w-8xl mx-auto bg-gray-950" data-controller="header">
+<header class="pt-5 pb-3 px-8 mx-auto bg-gray-950" data-controller="header">
   <nav class="flex items-center justify-between flex-wrap">
     <div class="flex items-center flex-no-shrink text-white mr-6">
       <% logo_path = current_user ? dashboard_index_path : root_path %>
@@ -32,17 +32,3 @@
     </div>
   </nav>
 </header>
-
-
-<!-- smooth scroll nav links -->
-<script type="text/javascript">
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-          e.preventDefault();
-
-          document.querySelector(this.getAttribute('href')).scrollIntoView({
-              behavior: 'smooth'
-          });
-      });
-  });
-</script>
