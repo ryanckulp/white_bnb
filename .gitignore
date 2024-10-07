@@ -47,7 +47,4 @@ coverage
 /config/credentials/development.key
 /config/credentials/production.key
 
-# don't risk prod keys that can be brute decrypted
-/config/credentials/production.yml.enc
-
 bin/prod
