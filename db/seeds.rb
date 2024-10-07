@@ -24,6 +24,15 @@ addons = [
 
 addons.each { |addon| Addon.find_or_create_by(addon) }
 
+puts "creating sample Review..."
+Review.find_or_create_by!(title: "Awesome", body: "Loved my stay here.", name: "Ryan Kulp", job_title: "Founder, TRMNL", email: "ryanckulp@gmail.com", approved: true)
+
+puts "creating sample Announcement (Changelog entry)..."
+
+ann = Announcement.find_or_initialize_by(title: "We. Are. Live.", version: "0.0.1", date: '2024-10-07')
+ann.body = "Now accepting guests!"
+ann.save
+
 require 'seed_support/rewardful'
 puts "setting up Rewardful affiliate program..."
 SeedSupport::Rewardful.run

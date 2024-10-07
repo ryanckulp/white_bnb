@@ -2,7 +2,6 @@
 require "fileutils"
 
 APP_ROOT = File.expand_path("..", __dir__)
-APP_NAME = "white-bnb"
 
 def system!(*args)
   system(*args, exception: true)
@@ -21,7 +20,7 @@ FileUtils.chdir APP_ROOT do
   #   FileUtils.cp "config/database.yml.sample", "config/database.yml"
   # end
 
-  puts "\n== Preparing database =="
+  puts "\n== Preparing + seeding database =="
   system! "bin/rails db:prepare"
 
   puts "\n== Removing old logs and tempfiles =="
