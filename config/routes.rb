@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   resources :payments, only: [:create] do
     get 'confirm', on: :collection
   end
+  resources :reviews, only: [:new, :create]
   resources :blog_posts, path: 'blog', param: :slug
 
   # static pages

@@ -1,5 +1,5 @@
 ActiveAdmin.register Setting do
-  menu priority: 7
+  menu priority: 6
 
   permit_params :key, :value
   actions :all, except: [:destroy]

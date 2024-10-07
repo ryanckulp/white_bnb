@@ -104,48 +104,26 @@
     </div>
     <h1 class="font-heading text-2xl sm:text-3xl md:text-4xl text-gray-900 mb-10 md:mb-16">People who visited here say...</h1>
     <div class="flex flex-wrap -m-4">
-      <div class="w-full lg:w-1/3 p-4">
-        <div class="lg:pr-6 pb-6 lg:pb-0 lg:border-r border-b lg:border-b-0 border-gray-200 h-full">
-          <p class="font-heading text-xl font-semibold mb-8">Unexpected Result</p>
-          <div class="bg-gray-200 h-px w-10 mb-8"></div>
-          <p class="font-heading tracking-tight mb-6 max-w-sm">It is a long established fact that a reader will be that the distracted by the readable content of a page when looking at its layout it is a long fact.</p>
-          <div class="flex flex-wrap items-center gap-4">
-            <%= image_tag "unknown-profile.jpg",  class:"h-16 rounded-full" %>
-            <div>
-              <p class="tracking-tight text-lg font-semibold">Lucian Kranz</p>
-              <p class="text-gray-500 tracking-tight text-sm">Designer, Front-end Developer</p>
+
+      <% Review.approved.each do |review| %>
+        <div class="w-full lg:w-1/3 p-4">
+          <div class="lg:pr-6 pb-6 lg:pb-0 lg:border-r border-b lg:border-b-0 border-gray-200 h-full">
+            <p class="font-heading text-xl font-semibold mb-8"><%= review.title %></p>
+            <div class="bg-gray-200 h-px w-10 mb-8"></div>
+            <p class="font-heading tracking-tight mb-6 max-w-sm">
+              <%= review.body %>
+            </p>
+            <div class="flex flex-wrap items-center gap-4">
+              <%= image_tag gravatar(review.email), class:"h-16 rounded-full" %>
+              <div>
+                <p class="tracking-tight text-lg font-semibold"><%= review.name %></p>
+                <p class="text-gray-500 tracking-tight text-sm"><%= review.job_title %></p>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="w-full lg:w-1/3 p-4">
-        <div class="lg:pr-6 lg:pl-6 pb-6 lg:pb-0 lg:border-r border-b lg:border-b-0 border-gray-200 h-full">
-          <p class="font-heading text-xl font-semibold mb-8">Great Service!</p>
-          <div class="bg-gray-200 h-px w-10 mb-8"></div>
-          <p class="font-heading tracking-tight mb-6 max-w-sm">It is a long established fact that a reader will be that the distracted by the readable content of a page when looking at its layout it is a long fact.</p>
-          <div class="flex flex-wrap items-center gap-4">
-            <%= image_tag "brian-sierakowski-profile.jpg",  class:"h-16 rounded-full" %>
-            <div>
-              <p class="tracking-tight text-lg font-semibold">Brian Sierakowski</p>
-              <p class="text-gray-500 tracking-tight text-sm">Entrepreneur, Back-end Developer</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="w-full lg:w-1/3 p-4">
-        <div class="lg:pl-6 h-full">
-          <p class="font-heading text-xl font-semibold mb-8">Highly Recommended</p>
-          <div class="bg-gray-200 h-px w-10 mb-8"></div>
-          <p class="font-heading tracking-tight mb-6 max-w-sm">It is a long established fact that a reader will be that the distracted by the readable content of a page when looking at its layout it is a long fact.</p>
-          <div class="flex flex-wrap items-center gap-4">
-            <%= image_tag "unknown-profile.jpg",  class:"h-16 rounded-full" %>
-            <div>
-              <p class="tracking-tight text-lg font-semibold">Seyoung Kulp</p>
-              <p class="text-gray-500 tracking-tight text-sm">Painter, Designer</p>
-            </div>
-          </div>
-        </div>
-      </div>
+      <% end %>
+
     </div>
   </div>
 </div>

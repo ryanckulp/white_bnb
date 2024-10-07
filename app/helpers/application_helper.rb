@@ -1,4 +1,10 @@
 module ApplicationHelper
+  # https://docs.gravatar.com/api/avatars/images/
+  def gravatar(email)
+    hash = Digest::MD5.hexdigest(email)
+    "https://gravatar.com/avatar/#{hash}?s=150&d=identicon"
+  end
+
   def nav_link_classes(path = nil)
     defaults = 'sm:ml-8 sm:mb-0 mb-4 whitespace-nowrap text-base font-heading font-light text-gray-100 hover:text-brand-indigo focus:text-brand-indigo active:text-brand-indigo'
     defaults.gsub!('gray', 'black').gsub!('-medium', '-bold') if request.path == "/#{path}"

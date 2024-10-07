@@ -1,5 +1,5 @@
 ActiveAdmin.register BlogPost do
-  menu priority: 6
+  menu priority: 8
 
   # For security, limit the actions that should be available
   actions :index

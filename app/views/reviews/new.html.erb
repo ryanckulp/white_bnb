@@ -1,0 +1,44 @@
+<%= render partial: "shared/heading", locals: { title: 'Leave a review', description: 'Go ahead, be candid.' } %>
+
+<div class="max-w-xl mx-auto sm:py-12 sm:px-0 px-4">
+  <%= form_for(@review, html: {class: "mt-8", autocomplete: 'off'}) do |f| %>
+    <%= render "devise/shared/error_messages", resource: @review %>
+
+    <div>
+      <div class="mb-5">
+        <%= f.label :title, class: "block text-sm font-heading font-medium text-gray-900" %>
+        <%= f.text_field :title, required: true, class: "block w-full border border-gray-300 rounded-lg px-3 py-4 text-gray-900 placeholder-gray-500 focus:ring-1 focus:ring-gray-900 focus:border-gray-900 sm:text-sm", placeholder: "An unforgettable experience" %>
+      </div>
+
+      <div class="mb-5">
+        <%= f.label :body, class: "block text-sm font-heading font-medium text-gray-900" %>
+        <%= f.text_area :body, required: true, rows: 5, class: "block w-full border border-gray-300 rounded-lg px-3 py-4 text-gray-900 placeholder-gray-500 focus:ring-1 focus:ring-gray-900 focus:border-gray-900 sm:text-sm", placeholder: "I really enjoyed my stay. I am speechless. I have no speech." %>
+      </div>
+
+      <div class="mb-5">
+        <%= f.label :job_title, 'Job Title / Role (optional)', class: "block text-sm font-heading font-medium text-gray-900" %>
+        <%= f.text_field :job_title, required: false, class: "block w-full border border-gray-300 rounded-lg px-3 py-4 text-gray-900 placeholder-gray-500 focus:ring-1 focus:ring-gray-900 focus:border-gray-900 sm:text-sm", placeholder: "CEO, Vandelay Industries" %>
+      </div>
+
+      <div class="mb-5">
+        <%= f.label :name, class: "block text-sm font-heading font-medium text-gray-900" %>
+        <%= f.text_field :name, required: false, class: "block w-full border border-gray-300 rounded-lg px-3 py-4 text-gray-900 placeholder-gray-500 focus:ring-1 focus:ring-gray-900 focus:border-gray-900 sm:text-sm", placeholder: "George Costanza", value: @review.name || params[:name] %>
+      </div>
+
+      <div class="mb-5">
+        <%= f.label :email, class: "block text-sm font-heading font-medium text-gray-900" %>
+        <%= f.text_field :email, type: :email, required: true, class: "block w-full border border-gray-300 rounded-lg px-3 py-4 text-gray-900 placeholder-gray-500 focus:ring-1 focus:ring-gray-900 focus:border-gray-900 sm:text-sm", placeholder: "happyguest@gmail.com", value: @review.email || params[:email] %>
+      </div>
+
+      <button type="submit" data-turbo="false" class="relative cursor-pointer w-full px-10 py-4 mb-10 flex items-center justify-center text-lg font-medium bg-gray-900 text-gray-100 hover:bg-gray-100 border border-gray-900 hover:text-gray-900 rounded-full transition ease-in-out duration-200 font-heading">
+
+          <!-- Heroicon name: solid/lock-closed -->
+          <svg class="h-5 w-5 mr-2 mb-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+            <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"></path>
+          </svg>
+
+        Save
+      </button>
+    </div>
+  <% end %>
+</div>
