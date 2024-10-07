@@ -6,6 +6,12 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="<%= Rails.application.credentials.company_name %>">
+    <meta name="twitter:image" content="<%= image_url 'og/og.jpg' %>">
+    <meta property="og:description" content="Do your best work.">
+    <meta name="og:image" content="<%= image_url 'og/og.jpg' %>">
+
     <!-- tailwind components -->
     <link href="https://cdn.jsdelivr.net/npm/daisyui@4.10.1/dist/full.min.css" rel="stylesheet" type="text/css" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.css" rel="stylesheet" />
