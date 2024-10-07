@@ -27,18 +27,18 @@ export default class extends Controller {
 
   highlightDates() {
     // clear out previous dates
-    Array.from(document.querySelectorAll('td.day')).forEach(function(d){ d.classList.remove('bg-green-300')});
+    Array.from(document.querySelectorAll('td.day')).forEach(function(d){ d.classList.remove('bg-brand-sky')});
 
     // set start/end dates
     [this.startDateValue, this.endDateValue].forEach((function(d) {
-      if (document.getElementById(d)) { document.getElementById(d).classList.add('bg-green-300')}
+      if (document.getElementById(d)) { document.getElementById(d).classList.add('bg-brand-sky')}
     }))
 
     // set dates between start/end
     let betweenDates = this.betweenDates(this.startDateValue, this.endDateValue)
     betweenDates.forEach(function(d) {
       if (document.getElementById(d)) {
-        document.getElementById(d).classList.add('bg-green-300')
+        document.getElementById(d).classList.add('bg-brand-sky')
       }
     })
   }

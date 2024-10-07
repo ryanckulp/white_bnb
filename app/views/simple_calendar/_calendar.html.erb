@@ -1,11 +1,11 @@
-<div class="simple-calendar">
-  <div class="calendar-heading flex mb-2">
+<div class="simple-calendar px-4 overflow-scroll">
+  <div class="calendar-heading sm:flex mb-2 sm:px-4">
     <div>
-      <h1 class="calendar-title font-semibold text:xl sm:text-2xl"><%= t('date.month_names')[start_date.month] %> <%= start_date.year %></h1>
+      <h1 class="calendar-title font-heading font-bold uppercase text-2xl"><%= t('date.month_names')[start_date.month] %> <%= start_date.year %></h1>
     </div>
 
-    <div class="flex-1 text-right">
-      <nav class="text-sm sm:text-md">
+    <div class="flex-1 sm:text-right">
+      <nav class="text-base sm:text-lg font-heading font-medium">
         <%= link_to t('simple_calendar.previous', default: 'Prev Month'), calendar.url_for_previous_view, class: 'hover:underline' %> |
         <%= link_to t('simple_calendar.today', default: 'Today'), calendar.url_for_today_view, class: 'hover:underline' %> |
         <%= link_to t('simple_calendar.next', default: 'Next Month'), calendar.url_for_next_view, class: 'hover:underline' %>

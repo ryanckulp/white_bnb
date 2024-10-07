@@ -1,5 +1,7 @@
 <% description ||= '' %>
-<div class="text-center mb-4">
-  <h1 class="mt-1 font-extrabold text-gray-900 text-4xl sm:text-4xl sm:tracking-tight lg:text-5xl dark:text-gray-200"><%= title %></h1>
-  <p class="max-w-xl mt-5 mx-auto text-xl text-gray-500"><%= description.html_safe %></p>
+<div class="sm:px-0 px-4 sm:py-10 py-5">
+  <div class="mx-auto w-full sm:max-w-6xl flex sm:flex-row flex-col sm:items-end sm:justify-between items-start w-full border-b border-gray-900">
+    <h1 class="font-heading text-gray-900 sm:tracking-tight text-4xl sm:text-5xl dark:text-gray-200"><%= title %></h1>
+    <p class="max-w-xl text-lg text-gray-900 font-heading"><%= description.html_safe %></p>
+  </div>
 </div>

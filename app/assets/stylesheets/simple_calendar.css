@@ -1,49 +1,58 @@
 .simple-calendar {
   table {
+    font-family: 'Josefin Slab';
     -webkit-border-horizontal-spacing: 0px;
     -webkit-border-vertical-spacing: 0px;
+    border-radius: 10px;
+    border-spacing: 0;
+    border: 1px solid #111827;
+    border-collapse: separate;
     background-color: rgba(0, 0, 0, 0);
-    border: 1px solid rgb(221, 221, 221);
-    border-collapse: collapse;
     box-sizing: border-box;
     max-width: 100%;
     width: 100%;
+    overflow: hidden;
   }
 
   tr {
+    border: 1px solid #11827;
+    border-radius: 10px;
     border-collapse: collapse;
   }
 
   th {
-    padding: 6px;
+    border: 1px solid #11827;
+    background-color: #111827;
+    padding: 10px;
     font-size: 16px;
-    border-bottom: 2px solid rgb(221, 221, 221);
+    color: #ffffff;
     border-collapse: collapse;
-    border-left: 1px solid rgb(221, 221, 221);
-    border-right: 1px solid rgb(221, 221, 221);
-    border-top: 0px none rgb(51, 51, 51);
+    border-bottom: 1px solid #111827;
+    border-right: 0.5px solid #111827;
+    border-left: 0.5px solid #111827;
     box-sizing: border-box;
     text-align: left;
   }
 
   td {
-    padding: 6px;
+    border-collapse: collapse;
+    padding: 8px;
     vertical-align: top;
-    /* width: 14%; */
-
-    border: 1px solid #ddd;
-    border-top-color: rgb(221, 221, 221);
+    font-weight: 600;
+    border: 1px solid #111827;
+    border-top-color: #111827;
     border-top-style: solid;
-    border-top-width: 1px;
-    border-right-color: rgb(221, 221, 221);
+    border-top-width: 0.5px;
+    border-right-color: #111827;
     border-right-style: solid;
-    border-right-width: 1px;
-    border-bottom-color: rgb(221, 221, 221);
+    border-right-width: 0.5px;
+    border-bottom-color: #111827;
     border-bottom-style: solid;
-    border-bottom-width: 1px;
-    border-left-color: rgb(221, 221, 221);
+    border-bottom-width: 0.5px;
+    border-left-color: #111827;
     border-left-style: solid;
-    border-left-width: 1px;
+    border-left-width: 0.5px;
+
   }
 
   .calendar-heading nav {
@@ -51,7 +60,7 @@
   }
 
   .day {
-    height: 80px;
+    height: 90px;
     font-size: 0.8rem;
   }
 
@@ -68,25 +77,25 @@
   .wday-6 {}
 
   .today {
-    background: #FFFFC0
+    background: #9ca3af;
   }
 
   .past {
-    background: #DDD;
+    background: #e5e7eb;
   }
   .future {}
 
   .start-date {}
 
   .prev-month {
-    background: #DDD;
+    background: #e5e7eb;
   }
   .next-month {
-    background: #DDD;
+    background: #e5e7eb;
   }
   .current-month {}
 
   .has-events {
-    background: #fda4af; /* rose-300 */
+    background: #e5ddda; /* brand-sky */
   }
 }
