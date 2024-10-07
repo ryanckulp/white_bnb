@@ -115,10 +115,10 @@ async function submit() {
     error = await stripe.confirmSetup(confirmationParams)
   }
 
-  // not particularly useful, Stripe form already validates inline
   if (error) {
     setLoading(false);
-    console.log(error)
+    console.log(error);
+    alert(error.message);
   }
 }
 
