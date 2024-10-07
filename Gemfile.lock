@@ -59,12 +59,12 @@ GEM
       erubi (~> 1.11)
       rails-dom-testing (~> 2.2)
       rails-html-sanitizer (~> 1.6)
-    activeadmin (4.0.0.beta6)
+    activeadmin (4.0.0.beta13)
       arbre (~> 2.0)
       csv
       formtastic (>= 3.1)
       formtastic_i18n (>= 0.4)
-      inherited_resources (~> 1.7)
+      inherited_resources (~> 2.0)
       kaminari (>= 1.2.1)
       railties (>= 6.1)
       ransack (>= 4.0)
@@ -195,7 +195,7 @@ GEM
       actionpack (>= 6.0.0)
       activesupport (>= 6.0.0)
       railties (>= 6.0.0)
-    inherited_resources (1.14.0)
+    inherited_resources (2.0.1)
       actionpack (>= 6.0)
       has_scope (>= 0.6)
       railties (>= 6.0)
@@ -481,7 +481,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
-  activeadmin (= 4.0.0.beta6)
+  activeadmin (= 4.0.0.beta13)
   aws-sdk-s3
   bootsnap
   capybara

@@ -1,55 +1,26 @@
 <div class="sm:px-0 px-4 sm:py-10 py-5">
   <div class="mx-auto w-full sm:max-w-6xl flex sm:flex-row flex-col sm:items-end sm:justify-between items-start w-full border-b border-gray-900">
     <h1 class="font-heading text-gray-900 sm:tracking-tight text-4xl sm:text-5xl dark:text-gray-200 sm:mb-0 mb-2">Changelog</h1>
-    <p class="max-w-2xl text-lg text-gray-900 font-heading"><strong><%= Rails.application.credentials.company_name %></strong> updates are documented in accordance with <%= link_to 'semantic versioning', 'https://en.wikipedia.org/wiki/Software_versioning#Semantic_versioning', class: 'text-brand-indigo underline', target: :_blank %>.</p>
+    <p class="max-w-2xl text-lg text-gray-900 font-heading"><strong><%= Rails.application.credentials.company_name %></strong> updates follow <%= link_to 'semantic versioning', 'https://en.wikipedia.org/wiki/Software_versioning#Semantic_versioning', class: 'text-brand-indigo underline', target: :_blank %>.</p>
   </div>
 </div>
-<div class="max-w-3xl mx-auto pt-8 pb-12 sm:px-0 px-4">
-
-  <div class="relative block pb-20 pl-6">
-    <div class="block h-full w-1 bg-black absolute left-0 top-0">
+<div class="max-w-3xl mx-auto pt-8 pb-4 sm:px-0 px-4">
+  <% Announcement.published.newest_to_oldest.each do |announcement| %>
+    <div class="relative block pb-8 pl-6">
+      <div class="block h-full w-1 bg-black absolute left-0 top-0">
+      </div>
+      <div class="block h-3 w-3 bg-black absolute -left-1 -top-1 rounded-full">
+      </div>
+      <div class="w-full">
+        <h3 class="text-sm font-bold mb-1 font-heading" id="<%= announcement.date.to_s %>"><%= announcement.date.strftime("%B %d, %Y") %></h3>
+        <p class="font-heading text-2xl mb-4">
+          <%= announcement.title %>
+        </p>
+        <div class="mb-6">
+          <%= announcement.body %>
+        </div>
+        <small>Version: <%= announcement. version %></small>
+      </div>
     </div>
-    <div class="block h-3 w-3 bg-black absolute -left-1 -top-1 rounded-full">
-    </div>
-    <div class="w-full">
-      <h3 class="text-sm font-bold mb-1 font-heading" id='oct1'>October 1, 2024</h3>
-      <p class="font-heading text-2xl mb-4">
-        title
-      </p>
-      <p class="font-heading text-sm">
-        description
-      </p>
-    </div>
-  </div>
-  <div class="relative block pb-20 pl-6">
-    <div class="block h-full w-1 bg-black absolute left-0 top-0">
-    </div>
-    <div class="block h-3 w-3 bg-black absolute -left-1 -top-1 rounded-full">
-    </div>
-    <div class="w-full">
-      <h3 class="text-sm font-bold mb-1 font-heading" id='oct1'>September 30, 2024</h3>
-      <p class="font-heading text-2xl mb-4">
-        title
-      </p>
-      <p class="font-heading text-sm">
-        description with <%= link_to 'link', '#', class: 'text-primary-500', target: :_blank %>.
-      </p>
-    </div>
-  </div>
-  <div class="relative block pb-20 pl-6">
-    <div class="block h-full w-1 bg-black absolute left-0 top-0">
-    </div>
-    <div class="block h-3 w-3 bg-black absolute -left-1 -top-1 rounded-full">
-    </div>
-    <div class="w-full">
-      <h3 class="text-sm font-bold mb-1 font-heading" id='oct1'>September 25, 2024</h3>
-      <p class="font-heading text-2xl mb-4">
-        title
-      </p>
-      <p class="font-heading text-sm">
-        some image
-        <%= image_tag '/icon.png', class: 'w-40 mt-2' %>
-      </p>
-    </div>
-  </div>
+  <% end %>
 </div>

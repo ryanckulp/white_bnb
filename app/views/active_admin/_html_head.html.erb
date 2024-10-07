@@ -1,0 +1,20 @@
+<%= stylesheet_link_tag "active_admin" %>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<%= csrf_meta_tags %>
+<%= csp_meta_tag %>
+<% # On page load or when changing themes, best to add inline in `head` to avoid FOUC %>
+<%= javascript_tag nonce: true do %>
+  if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    document.documentElement.classList.add('dark')
+  } else {
+    document.documentElement.classList.remove('dark')
+  }
+<% end %>
+<%= javascript_importmap_tags "active_admin", importmap: ActiveAdmin.importmap %>
+
+<%# Dashboard charting %>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartkick@5.0.1/dist/chartkick.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/trix/1.2.1/trix.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/trix/1.2.1/trix.css"></link>
