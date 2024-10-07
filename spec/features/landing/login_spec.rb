@@ -6,8 +6,9 @@ feature 'Login', js: true do
   scenario 'Login should work when user has no reservations' do
     user = create(:user)
     login(user)
+
     expect(page.text).to include('Select dates for your stay')
-    expect(page.text).to include(Date.today.strftime('%B'))
+    expect(page.text).to include(Date.today.strftime('%B').upcase)
   end
 
   scenario 'Login should work when user has reservations' do
