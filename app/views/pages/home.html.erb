@@ -5,7 +5,7 @@
   </div>
   <div class="containter py-20 md:pt-44 space-y-2 flex flex-col justify-center">
 
-    <h2 class="text-center text-8xl font-light max-w-md mx-auto text-white font-heading mb-20 tracking-wide leading-none uppercase text-right">Do Your<br>Best <br><a class="flex w-full border-b-2">Work</a></h2>
+    <h2 class="text-center text-8xl font-light max-w-md mx-auto text-white font-heading mb-20 tracking-wide leading-none uppercase text-right px-2">Do Your<br>Best <br><a class="flex w-full border-b-2">Work</a></h2>
 
     <%= link_to 'Book Now', book_path, class: 'bg-gray-100 text-gray-800 px-10 py-4 mb-10 font-heading text-xl rounded-full mx-auto hover:bg-gray-900 hover:text-gray-100 delay-300 transition ease-in-out' %>
     <a class="block text-white mx-auto py-10 group" href="#explore">
@@ -15,9 +15,11 @@
     </a>
   </div>
 </div>
-<div id="explore" class="px-4 md:px-24 py-32 bg-gray-950">
+<div id="explore" class="px-4 md:px-24 py-24 bg-gray-950 font-heading">
   <div class="container mx-auto px-4">
-    <h1 class="text-center font-heading font-light text-4xl sm:text-5xl md:text-6xl text-gray-100 mb-16 sm:mb-24">Explore the space</h1>
+    <h1 class="text-center font-light text-4xl sm:text-5xl md:text-6xl text-gray-100 mb-2">Explore the space</h1>
+    <p class="text-center text-gray-200 mb-12">The Hacker House is a 2 bedroom, 2.5 bathroom steel and glass home located < 1 hour south of the Atlanta, GA airport.</p>
+
     <div class="flex flex-wrap -m-4">
       <div class="w-full lg:w-1/2 p-4">
         <div class="rounded-2xl overflow-clip w-full h-[688px] relative">
@@ -25,8 +27,8 @@
             <div class="block h-60 w-96 p-4 absolute -left-4 -top-4 z-10 bg-gray-950 rounded-2xl">
               <div class="block rounded-2xl w-full h-full p-4">
                 <div class="w-full bg-gray-100 h-1 block mb-8"></div>
-                <h1 class="font-heading text-gray-100 font-medium text-xl mb-8">Premium office setup</h1>
-                <p class="font-heading text-gray-100 text-base">Enjoy a 38" curved monitor and height-adjustable standup desk. You'll face a private pond, surrrounded by nature.</p>
+                <h1 class="text-gray-100 font-medium text-xl mb-8">Premium office setup</h1>
+                <p class="text-gray-100 text-base">Enjoy a 38" curved monitor and height-adjustable standup desk. You'll face a private pond, surrrounded by nature.</p>
               </div>
             </div>
         </div>
@@ -35,20 +37,20 @@
         <div class="rounded-2xl overflow-clip w-full h-[330px] relative mb-7">
             <%= image_tag "feature-image-3.jpeg",  class:"object-cover object-bottom w-full h-full" %>
             <div class="block h-40 w-2/3 p-4 absolute -left-4 -bottom-4 z-10 bg-gray-950 rounded-2xl">
-              <div class="block rounded-2xl w-full h-full p-4">
+              <div class="block rounded-2xl w-full h-full p-4 overflow-scroll">
                 <div class="w-full bg-gray-100 h-1 block mb-4"></div>
-                <h1 class="font-heading text-gray-100 font-medium text-xl mb-4">Full size kitchen</h1>
-                <p class="font-heading text-gray-100 text-base">Stay focused, stay healthy. Prepare your own food, espresso, or snacks.</p>
+                <h1 class="text-gray-100 font-medium text-xl mb-4">Full size kitchen</h1>
+                <p class="text-gray-100 text-base">Stay focused, stay healthy. Prepare your own food, espresso, or snacks.</p>
               </div>
             </div>
         </div>
         <div class="rounded-2xl overflow-clip w-full h-[330px] relative">
             <%= image_tag "featured-image-1.jpeg",  class:"object-cover w-full h-full" %>
             <div class="block h-40 w-2/3 p-4 absolute -right-4 -bottom-4 z-10 bg-gray-950 rounded-2xl">
-              <div class="block rounded-2xl w-full h-full p-4">
+              <div class="block rounded-2xl w-full h-full p-4 overflow-scroll">
                 <div class="w-full bg-gray-100 h-1 block mb-4"></div>
-                <h1 class="font-heading text-gray-100 font-medium text-xl mb-4">Coworking space</h1>
-                <p class="font-heading text-gray-100 text-base">Featuring a 6-person table, crowd-sourced library, weights, yoga mats, and 2 more standup desks + a walking pad.</p>
+                <h1 class="text-gray-100 font-medium text-xl mb-4">Coworking space</h1>
+                <p class="text-gray-100 text-base">Featuring a 6-person table, crowd-sourced library, weights, yoga mats, and 2 more standup desks + a walking pad.</p>
               </div>
             </div>
         </div>
@@ -67,10 +69,16 @@
       <div class="max-w-lg mx-auto lg:max-w-none">
         <div class="flex flex-wrap -mx-4">
           <div class="w-full lg:w-1/2 px-4 mb-12 lg:mb-0">
-            <div class="max-w-xl">
-              <h1 class="font-heading text-4xl sm:text-5xl md:text-6xl mb-6">When I needed to learn to code, I did this:</h1>
-              <p class="font-heading text-lg  opacity-80 mb-10">
-                I'm Ryan, your host. In 2015 I was struggling to get ahead in my career so I decided to drop everything and pick up programming. I quit my job, moved to Thailand, and spent 18+ hours a day taking tutorials online. Being in a blank slate environment was critical for me to overcome the learning curve of coding, and one of the best decisions I ever made. Through this routine I learned that warming up a new skill sometimes requires letting another part of your life get hypothermia. The Hacker House is an attempt to make this type of learning (doing, building) environment as replicable as clicking a button.
+            <div class="max-w-xl font-heading text-lg">
+              <h1 class="text-4xl sm:text-5xl md:text-6xl mb-6">When I needed to G.S.D., I did this:</h1>
+              <p class="opacity-80 mb-6">
+                I'm Ryan, your host. In 2015 I was struggling to get ahead in my career as a marketer so I decided to drop everything and pick up programming.
+              </p>
+              <p class="opacity-80 mb-6">
+                I quit my job, <%= link_to 'moved to Thailand', 'https://www.ryanckulp.com/ryan-goes-to-thailand/', target: :_blank, class: 'underline' %>, and spent 16+ hours a day taking tutorials online. This blank slate environment was critical for me to overcome the technical learning curve, and one of the best decisions I've ever made.
+              </p>
+              <p class="opacity-80 mb-6">
+                Through this routine I learned that warming up a new skill sometimes requires letting another part of your life get hypothermia. The Hacker House is an attempt to productize this (learning, doing, building) environment with a simple <%= link_to 'click of the button', book_path, class: 'underline' %>.
               </p>
             </div>
             <a href="https://www.ryanckulp.com/ryan-goes-to-thailand/" class="w-1/2 inline-flex py-2 px-6 font-heading items-center justify-center text-lg font-medium text-white hover:text-black border border-white hover:border-primary-500 hover:bg-primary-500 rounded-full transition duration-300">See all</a>
@@ -180,58 +188,72 @@
 <section class="px-8 md:px-24 py-12">
   <div class="bg-gray-100 rounded-2xl px-8 py-24">
     <h1 class="font-heading tracking-tight text-4xl md:text-6xl font-medium text-center mb-4">FAQ</h1>
-    <p class="tracking-tight text-center mb-12 font-heading">Get to know our most common questions & answers.</p>
+    <p class="tracking-tight text-center mb-12 font-heading">Figure out if the Hacker House is the right fit.</p>
     <div class="max-w-2xl mx-auto mb-10">
 
-<div id="accordion-collapse" data-accordion="collapse">
-  <h2 id="accordion-collapse-heading-1">
-    <button type="button" class="flex items-center justify-between w-full p-5 font-medium rtl:text-right text-gray-500 border border-b-0 border-gray-200 rounded-t-xl focus:ring-4 focus:ring-gray-200 hover:bg-gray-100 gap-3" data-accordion-target="#accordion-collapse-body-1" aria-expanded="true" aria-controls="accordion-collapse-body-1">
-      <span>What is Flowbite?</span>
-      <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5 5 1 1 5"/>
-      </svg>
-    </button>
-  </h2>
-  <div id="accordion-collapse-body-1" class="hidden" aria-labelledby="accordion-collapse-heading-1">
-    <div class="p-5 border border-b-0 border-gray-200">
-      <p class="mb-2 text-gray-500">Flowbite is an open-source library of interactive components built on top of Tailwind CSS including buttons, dropdowns, modals, navbars, and more.</p>
-      <p class="text-gray-500">Check out this guide to learn how to and start developing websites even faster with components on top of Tailwind CSS.</p>
+      <div id="accordion-collapse" data-accordion="collapse">
+        <h2 id="accordion-collapse-heading-1">
+          <button type="button" class="flex items-center justify-between w-full p-5 font-medium rtl:text-right text-gray-500 border border-b-0 border-gray-200 rounded-t-xl focus:ring-4 focus:ring-gray-200 hover:bg-gray-100 gap-3" data-accordion-target="#accordion-collapse-body-1" aria-expanded="true" aria-controls="accordion-collapse-body-1">
+            <span>Where is this place exactly?</span>
+            <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5 5 1 1 5"/>
+            </svg>
+          </button>
+        </h2>
+        <div id="accordion-collapse-body-1" class="hidden" aria-labelledby="accordion-collapse-heading-1">
+          <div class="p-5 border border-b-0 border-gray-200 text-gray-500">
+            <p class="mb-2">The Hacker House is located in a small town less than 1 hour south of the ATL airport, in West Georgia. It sits on a 50 acre property, approximately 300 meters from the host and owner's (Ryan Kulp) permanent residence. Guests have full access to the property (fishing, canoe/kayak, wooded trails, etc) and full privacy (no cameras!).</p>
+            <p class="">Check out this guide to learn how to and start developing websites even faster with components on top of Tailwind CSS.</p>
+          </div>
+        </div>
+        <h2 id="accordion-collapse-heading-2">
+          <button type="button" class="flex items-center justify-between w-full p-5 font-medium rtl:text-right text-gray-500 border border-b-0 border-gray-200 focus:ring-4 focus:ring-gray-200 hover:bg-gray-100 gap-3" data-accordion-target="#accordion-collapse-body-2" aria-expanded="false" aria-controls="accordion-collapse-body-2">
+            <span>What are all the amenities?</span>
+            <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5 5 1 1 5"/>
+            </svg>
+          </button>
+        </h2>
+        <div id="accordion-collapse-body-2" class="hidden" aria-labelledby="accordion-collapse-heading-2">
+          <div class="p-5 border border-b-0 border-gray-200 text-gray-500">
+            <p class="mb-2">The Hacker House is primarily a place to Get Things Done. That said, we provide the following features to make your stay comfortable:</p>
+            <ul class="list-disc pl-4">
+              <li>Two medium-soft full beds with sheets, comforters, and extra blankets</li>
+              <li>Powerful quad-zone mini split system for any climate</li>
+              <li>LG 38” QHD+ Nano Curved UltraWide™ Monitor (3840x1600 resolution)</li>
+              <li>Breville Baristo Pro espresso machine</li>
+              <li>UE Megaboom 4 BLE speaker</li>
+              <li>LED 16-million color ceiling light strip and lamp</li>
+              <li>International-friendly wall plugs (US/EU supported)</li>
+              <li>Scented candles</li>
+              <li>FlexiSpot E5 dual motor standing desk</li>
+              <li>Walking pad (up to 4mph)</li>
+              <li>Canoe, Kayak, Fishing Poles, ~1 mile long walking trail</li>
+              <li>Growing library with primarily non-fiction books</li>
+            </ul>
+          </div>
+        </div>
+        <h2 id="accordion-collapse-heading-3">
+          <button type="button" class="flex items-center justify-between w-full p-5 font-medium rtl:text-right text-gray-500 border border-gray-200 focus:ring-4 focus:ring-gray-200 hover:bg-gray-100 gap-3" data-accordion-target="#accordion-collapse-body-3" aria-expanded="false" aria-controls="accordion-collapse-body-3">
+            <span>Why book the Hacker House instead of a hotel?</span>
+            <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5 5 1 1 5"/>
+            </svg>
+          </button>
+        </h2>
+        <div id="accordion-collapse-body-3" class="hidden" aria-labelledby="accordion-collapse-heading-3">
+          <div class="p-5 border border-t-0 border-gray-200">
+            <p class="mb-2 text-gray-500">Hotels have neighboring rooms, the Hacker House has 50 acres of nature.</p>
+            <!-- <p class="mb-2 text-gray-500">Hotels have annoying check-in and check-out times, the Hacker House gives you a full day to arrive and depart.</p> -->
+            <p class="mb-2 text-gray-500">Hotels are for taking a break. The Hacker House is for getting things done.</p>
+            <p class="mb-2 text-gray-500">Hotels have cleaning fees, noise rules, </p>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-  <h2 id="accordion-collapse-heading-2">
-    <button type="button" class="flex items-center justify-between w-full p-5 font-medium rtl:text-right text-gray-500 border border-b-0 border-gray-200 focus:ring-4 focus:ring-gray-200 hover:bg-gray-100 gap-3" data-accordion-target="#accordion-collapse-body-2" aria-expanded="false" aria-controls="accordion-collapse-body-2">
-      <span>Is there a Figma file available?</span>
-      <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5 5 1 1 5"/>
-      </svg>
-    </button>
-  </h2>
-  <div id="accordion-collapse-body-2" class="hidden" aria-labelledby="accordion-collapse-heading-2">
-    <div class="p-5 border border-b-0 border-gray-200">
-      <p class="mb-2 text-gray-500">Flowbite is first conceptualized and designed using the Figma software so everything you see in the library has a design equivalent in our Figma file.</p>
-      <p class="text-gray-500">Check out the based on the utility classes from Tailwind CSS and components from Flowbite.</p>
-    </div>
-  </div>
-  <h2 id="accordion-collapse-heading-3">
-    <button type="button" class="flex items-center justify-between w-full p-5 font-medium rtl:text-right text-gray-500 border border-gray-200 focus:ring-4 focus:ring-gray-200 hover:bg-gray-100 gap-3" data-accordion-target="#accordion-collapse-body-3" aria-expanded="false" aria-controls="accordion-collapse-body-3">
-      <span>What are the differences between Flowbite and Tailwind UI?</span>
-      <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5 5 1 1 5"/>
-      </svg>
-    </button>
-  </h2>
-  <div id="accordion-collapse-body-3" class="hidden" aria-labelledby="accordion-collapse-heading-3">
-    <div class="p-5 border border-t-0 border-gray-200">
-      <p class="mb-2 text-gray-500">The main difference is that the core components from Flowbite are open source under the MIT license, whereas Tailwind UI is a paid product. Another difference is that Flowbite relies on smaller and standalone components, whereas Tailwind UI offers sections of pages.</p>
-      <p class="mb-2 text-gray-500">However, we actually recommend using both Flowbite, Flowbite Pro, and even Tailwind UI as there is no technical reason stopping you from using the best of two worlds.</p>
-      <p class="mb-2 text-gray-500">Learn more about these technologies:</p>
-    </div>
-  </div>
-</div>
 
+    <p class="tracking-tight text-center text-xl font-medium font-heading mb-4">Ready to do something great?</p>
 
-    </div>
-    <p class="tracking-tight text-center text-xl font-medium font-heading mb-4">Ready to stay?</p>
     <div class="flex justify-center">
       <%= link_to 'Book Now', book_path, class: 'inline-flex px-10 py-4 mb-10 items-center justify-center text-lg font-medium bg-gray-900 text-gray-100 hover:bg-gray-100 border border-gray-900 hover:text-gray-900 rounded-full transition ease-in-out duration-200 font-heading' %>
     </div>
