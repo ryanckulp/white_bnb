@@ -40,7 +40,22 @@ document.addEventListener("turbo:load", () => {
     }
 
     // mount payment form with theme options
-    const appearance = { theme: 'flat',   variables: { colorPrimaryText: '#262626' } };
+    const appearance = {
+      theme: 'minimal',
+
+      variables: {
+        colorPrimary: '#111827',
+        colorBackground: '#ffffff',
+        colorText: '#111827',
+        colorDanger: '#df1b41',
+        fontFamily: 'Ideal Sans, system-ui, sans-serif',
+        spacingUnit: '6px',
+        borderRadius: '40px',
+        // See all possible variables below
+      }
+    };
+
+
     const options = { business: { name: '<%= Rails.application.credentials.company_name %>' } };
     elements = stripe.elements({ clientSecret, appearance });
     const paymentElement = elements.create('payment', options);

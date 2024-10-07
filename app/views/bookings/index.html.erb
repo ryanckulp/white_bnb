@@ -1,26 +1,28 @@
-<%= render partial: "shared/heading", locals: { title: 'Book', description: "Select dates for your stay at the #{Rails.application.credentials.company_name}." } %>
+<section class="sm:pb-8 pb-4 sm:px-0 px-4">
+  <%= render partial: "shared/heading", locals: { title: 'Book', description: "Select dates for your stay at the #{Rails.application.credentials.company_name}." } %>
 
-<section data-controller="calendar" data-calendar-price-per-night-value="<%= Setting.per_night_price %>">
-  <%= turbo_frame_tag 'calendar' do %>
-    <%= month_calendar(events: @bookings, attribute: :start_date, end_attribute: :end_date, partial: 'simple_calendar/calendar') do |date, bookings| %>
-      <%= date %>
+  <div class="container mx-auto max-w-6xl sm:px-8 px-2 pt-8 pb-4 rounded-2xl bg-gray-100" data-controller="calendar" data-calendar-price-per-night-value="<%= Setting.per_night_price %>">
+    <%= turbo_frame_tag 'calendar' do %>
+      <%= month_calendar(events: @bookings, attribute: :start_date, end_attribute: :end_date, partial: 'simple_calendar/calendar') do |date, bookings| %>
+        <%= date %>
 
-      <% bookings.each do |booking| %>
-        <div>
-          <%= 'Reserved' %>
-        </div>
+        <% bookings.each do |booking| %>
+          <div>
+            <%= 'Reserved' %>
+          </div>
+        <% end %>
       <% end %>
     <% end %>
-  <% end %>
 
-  <div class="text-right mb-2">
-    <p class="sr-only">Start Date: <span id="start_date"></span></p>
-    <p class="sr-only">End Date: <span id="end_date"></span></p>
-  </div>
+    <div class="text-right mb-2">
+      <p class="sr-only">Start Date: <span id="start_date"></span></p>
+      <p class="sr-only">End Date: <span id="end_date"></span></p>
+    </div>
 
-  <div class="text-center mt-4">
-    <input type="hidden" name="csrf-token" value="<%= form_authenticity_token %>">
-    <button class="bg-blue-500 px-4 py-2 text-white text-lg rounded-md" data-action="click->calendar#createBooking">Book Now</button>
-    <p class="mt-2"><span id="price_calculation"></span></p>
+    <div class="text-center py-4">
+      <input type="hidden" name="csrf-token" value="<%= form_authenticity_token %>">
+      <button class="inline-flex px-10 py-4 items-center justify-center text-lg font-medium bg-gray-900 text-gray-100 hover:bg-gray-100 border border-gray-900 hover:text-gray-900 rounded-full transition ease-in-out duration-200 font-heading" data-action="click->calendar#createBooking">Book Now</button>
+      <p class="mt-2"><span class="text-sm" id="price_calculation"></span></p>
+    </div>
   </div>
 </section>
