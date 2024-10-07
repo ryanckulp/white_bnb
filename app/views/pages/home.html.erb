@@ -1,7 +1,8 @@
 <% meta title: Rails.application.credentials.company_name, description: "Work, work out, eat, repeat." %>
+
 <div class="relative h-screen flex justify-center">
   <div class="absolute transform left-1/2 -translate-x-1/2 -z-10 w-full bg-black/50 h-full">
-    <%= image_tag "lander-test-image-6.jpeg",  class:"w-full h-full mix-blend-multiply object-cover bg-cover" %>
+    <%= image_tag "hero.jpeg",  class:"w-full h-full mix-blend-multiply object-cover bg-cover" %>
   </div>
   <div class="containter py-20 md:pt-44 space-y-2 flex flex-col justify-center">
 
@@ -23,7 +24,7 @@
     <div class="flex flex-wrap -m-4">
       <div class="w-full lg:w-1/2 p-4">
         <div class="rounded-2xl overflow-clip w-full h-[688px] relative">
-            <%= image_tag "feature-image-4.jpeg",  class:"object-cover w-full h-full" %>
+            <%= image_tag "loft-office.jpeg", class: "object-cover w-full h-full" %>
             <div class="block h-60 w-96 p-4 absolute -left-4 -top-4 z-10 bg-gray-950 rounded-2xl">
               <div class="block rounded-2xl w-full h-full p-4">
                 <div class="w-full bg-gray-100 h-1 block mb-8"></div>
@@ -35,7 +36,7 @@
       </div>
       <div class="w-full lg:w-1/2 p-4">
         <div class="rounded-2xl overflow-clip w-full h-[330px] relative mb-7">
-            <%= image_tag "feature-image-3.jpeg",  class:"object-cover object-bottom w-full h-full" %>
+            <%= image_tag "kitchen.jpeg", class: "object-cover object-bottom w-full h-full" %>
             <div class="block h-40 w-2/3 p-4 absolute -left-4 -bottom-4 z-10 bg-gray-950 rounded-2xl">
               <div class="block rounded-2xl w-full h-full p-4 overflow-scroll">
                 <div class="w-full bg-gray-100 h-1 block mb-4"></div>
@@ -45,7 +46,7 @@
             </div>
         </div>
         <div class="rounded-2xl overflow-clip w-full h-[330px] relative">
-            <%= image_tag "featured-image-1.jpeg",  class:"object-cover w-full h-full" %>
+            <%= image_tag "dining.jpeg", class: "object-cover w-full h-full" %>
             <div class="block h-40 w-2/3 p-4 absolute -right-4 -bottom-4 z-10 bg-gray-950 rounded-2xl">
               <div class="block rounded-2xl w-full h-full p-4 overflow-scroll">
                 <div class="w-full bg-gray-100 h-1 block mb-4"></div>
@@ -59,18 +60,18 @@
   </div>
 </div>
 
-<div class="py-12 lg:py-24">
+<div class="py-12">
   <div class="container mx-auto px-4">
-    <div class="flex border-b border-gray-900 pb-4 items-center text-gray-900 mb-16">
+    <div class="flex border-b border-gray-900 pb-4 items-center text-gray-900 mb-8 sm:mb-16">
       <svg width="8" height="8" viewbox="0 0 9 9" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="4" cy="4" r="4" fill="currentColor"></circle></svg>
       <span class="inline-block ml-2 text-sm font-medium font-heading">Why the Hacker House Exists</span>
     </div>
     <div class="">
       <div class="max-w-lg mx-auto lg:max-w-none">
-        <div class="flex flex-wrap -mx-4">
-          <div class="w-full lg:w-1/2 px-4 mb-12 lg:mb-0">
+        <div class="flex flex-col-reverse sm:flex-row -mx-4">
+          <div class="w-full lg:w-1/2 px-4 mb-8 lg:mb-0">
             <div class="max-w-xl font-heading text-lg">
-              <h1 class="text-4xl sm:text-5xl md:text-6xl mb-6">When I needed to G.S.D., I did this:</h1>
+              <h1 class="text-4xl sm:text-5xl md:text-6xl mb-6 mt-6 sm:mt-0">When I needed to G.S.D., I did this:</h1>
               <p class="opacity-80 mb-6">
                 I'm Ryan, your host. In 2015 I was struggling to get ahead in my career as a marketer so I decided to drop everything and pick up programming.
               </p>
@@ -81,12 +82,9 @@
                 Through this routine I learned that warming up a new skill sometimes requires letting another part of your life get hypothermia. The Hacker House is an attempt to productize this (learning, doing, building) environment with a simple <%= link_to 'click of the button', book_path, class: 'underline' %>.
               </p>
             </div>
-            <a href="https://www.ryanckulp.com/ryan-goes-to-thailand/" class="w-1/2 inline-flex py-2 px-6 font-heading items-center justify-center text-lg font-medium text-white hover:text-black border border-white hover:border-primary-500 hover:bg-primary-500 rounded-full transition duration-300">See all</a>
           </div>
           <div class="w-full lg:w-1/2 px-4">
-            <div class="lg:max-w-md lg:ml-auto">
-              <%= image_tag "ryan-kulp-headshot.jpg",  class:"block w-full h-full object-cover rounded-xl" %>
-            </div>
+            <%= image_tag "host-headshot.jpg" %>
           </div>
         </div>
       </div>
@@ -94,9 +92,7 @@
   </div>
 </div>
 
-
-
-<div class="px-8 md:px-24 py-32 md:pb-48">
+<div class="px-8 md:px-24 py-12 sm:py-32 md:pb-48">
   <div class="container mx-auto px-4">
     <div class="flex mb-4 items-center text-gray-900 pb-4 border-b border-gray-900 mb-12">
       <svg width="8" height="8" viewbox="0 0 9 9" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="4" cy="4" r="4" fill="currentColor"></circle></svg>
@@ -181,7 +177,6 @@
         <div id="accordion-collapse-body-1" class="hidden" aria-labelledby="accordion-collapse-heading-1">
           <div class="p-5 border border-b-0 border-gray-200 text-gray-500">
             <p class="mb-2">The Hacker House is located in a small town less than 1 hour south of the ATL airport, in West Georgia. It sits on a 50 acre property, approximately 300 meters from the host and owner's (Ryan Kulp) permanent residence. Guests have full access to the property (fishing, canoe/kayak, wooded trails, etc) and full privacy (no cameras!).</p>
-            <p class="">Check out this guide to learn how to and start developing websites even faster with components on top of Tailwind CSS.</p>
           </div>
         </div>
         <h2 id="accordion-collapse-heading-2">
@@ -224,9 +219,9 @@
         <div id="accordion-collapse-body-3" class="hidden" aria-labelledby="accordion-collapse-heading-3">
           <div class="p-5 border border-t-0 border-gray-200">
             <p class="mb-2 text-gray-500">Hotels have neighboring rooms, the Hacker House has 50 acres of nature.</p>
-            <!-- <p class="mb-2 text-gray-500">Hotels have annoying check-in and check-out times, the Hacker House gives you a full day to arrive and depart.</p> -->
-            <p class="mb-2 text-gray-500">Hotels are for taking a break. The Hacker House is for getting things done.</p>
-            <p class="mb-2 text-gray-500">Hotels have cleaning fees, noise rules, </p>
+            <p class="mb-2 text-gray-500">Hotels are for taking a break. the Hacker House is for getting things done.</p>
+            <p class="mb-2 text-gray-500">Hotels have cleaning fees, noise rules, and strict checkout. The Hacker House does not.</p>
+            <p class="mb-2 text-gray-500">If you're looking for a hotel, the Hacker House is not for you.</p>
           </div>
         </div>
       </div>
