@@ -26,7 +26,7 @@ class BookingsController < ApplicationController
   end
 
   def clear_stale_bookings
-    Booking.stale.where(created_at: 7.days.ago..1.hour.ago).destroy_all # abandoned cart
+    Booking.stale.where(created_at: 7.days.ago..15.minutes.ago).destroy_all # abandoned cart expiry
     current_user.bookings.stale.destroy_all if current_user # user restarts process
   end
 
