@@ -41,10 +41,13 @@ dump.rdb
 .idea/*.iml
 .idea/vcs.xml
 
-/config/credentials/test.key
 coverage
 
+/config/credentials/test.key
 /config/credentials/development.key
 /config/credentials/production.key
+
+# don't risk prod keys that can be brute decrypted
+/config/credentials/production.yml.enc
 
 bin/prod
