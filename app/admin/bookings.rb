@@ -2,7 +2,7 @@ ActiveAdmin.register Booking do
   menu priority: 3
 
   # Specify parameters which should be permitted for assignment
-  permit_params :start_date, :end_date, :notes, :stripe_payment_id_id, :user_id
+  permit_params :start_date, :end_date, :notes, :stripe_payment_id, :user_id
 
   # For security, limit the actions that should be available
   actions :all, except: []
