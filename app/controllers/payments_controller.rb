@@ -67,6 +67,6 @@ class PaymentsController < ApplicationController
   end
 
   def amount_in_cents
-    amount_in_dollars * 100
+    (amount_in_dollars * 100).to_i
   end
 end
