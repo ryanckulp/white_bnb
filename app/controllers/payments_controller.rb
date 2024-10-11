@@ -53,9 +53,9 @@ class PaymentsController < ApplicationController
   end
 
   def coupon_amount_in_dollars
-    if @coupon.percent_off
+    if @coupon&.percent_off
       @booking.total_amount * (@coupon.percent_off / 100.0)
-    elsif @coupon.amount_off
+    elsif @coupon&.amount_off
       @coupon.amount_off / 100.0
     else
       0.0
