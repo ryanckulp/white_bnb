@@ -8,7 +8,7 @@ settings = [
   { key: 'host_phone_number', value: '+1 555-867-5309' },
   { key: 'host_email', value: 'hq@founderhacker.com' },
   { key: 'per_night_price', value: 130 },
-  { key: 'minimum_nights', value: 4 }, # TODO: enforce this logic on /book
+  { key: 'minimum_stay_length', value: 4 },
   { key: 'check_in_time', value: '12pm' },
   { key: 'check_out_time', value: '12pm' }
 ]

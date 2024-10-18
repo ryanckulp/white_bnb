@@ -53,5 +53,12 @@ RSpec.describe Booking, type: :model do
       expect(new_booking.valid?).to be false
       expect(new_booking.errors.full_messages).to include('Another booking exists between these dates')
     end
+
+    it 'should not allow bookings shorter than the minimum stay length' do
+      Setting.create!(key: 'minimum_stay_length', value: subject.nights + 1)
+
+      expect(subject.valid?).to be false
+      expect(subject.errors.full_messages).to include("Stay must be at least #{subject.nights + 1} nights")
+    end
   end
 end

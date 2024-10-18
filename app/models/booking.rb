@@ -4,6 +4,7 @@ class Booking < ApplicationRecord
 
   validates :start_date, :end_date, presence: true
   validate :dates_dont_overlap, on: :create
+  validate :minimum_stay_length, on: :create
 
   has_many :booking_addons, dependent: :destroy
 
@@ -22,6 +23,13 @@ class Booking < ApplicationRecord
     elsif Booking.where("start_date BETWEEN ? AND ?", start_date, end_date).exists? || Booking.where("end_date BETWEEN ? AND ?", start_date, end_date).exists?
       errors.add(:base, message: 'Another booking exists between these dates')
     end
+  end
+
+  def minimum_stay_length
+    min_stay = Setting.lookup('minimum_stay_length')
+    return unless min_stay
+
+    errors.add(:base, message: "Stay must be at least #{min_stay} nights") if nights < min_stay.to_i
   end
 
   def addon_fees

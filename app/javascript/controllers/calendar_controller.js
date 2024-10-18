@@ -5,7 +5,6 @@ export default class extends Controller {
   static values = { startDate: String, endDate: String, pricePerNight: Number }
 
   connect() {
-    console.log('Calendar JS connected')
     this.startDateValue = localStorage.getItem('bnb_start_date');
     this.endDateValue = localStorage.getItem('bnb_end_date');
     this.highlightDates();
