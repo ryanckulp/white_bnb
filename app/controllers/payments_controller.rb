@@ -32,6 +32,7 @@ class PaymentsController < ApplicationController
 
     if intent.status == 'succeeded'
       @booking.update(stripe_payment_id: intent.id)
+      AdminMailer.new_booking(@booking).deliver_later
       redirect_to thanks_path
     else
       redirect_to checkout_index_path, alert: "Something went wrong, please try again."
