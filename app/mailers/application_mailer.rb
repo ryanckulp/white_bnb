@@ -1,6 +1,6 @@
 class ApplicationMailer < ActionMailer::Base
   layout 'mailer'
-  default from: '"Support Team" <support@whitebnb.com>'
+  default from: Rails.application.credentials.admin_email_full # ex: '"Host Team" <bookings@whitebnb.com>'
 
   after_action :create_mail_log
 
