@@ -13,6 +13,12 @@ ActiveAdmin.register User do
     redirect_to account_index_path
   end
 
+  controller do
+    def scoped_collection
+      User.where("email NOT ILIKE '%#{User.guest_email_domain}%'")
+    end
+  end
+
   # Add or remove filters to toggle their visibility
   filter :email
   filter :created_at
