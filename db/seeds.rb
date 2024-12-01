@@ -10,7 +10,9 @@ settings = [
   { key: 'per_night_price', value: 130 },
   { key: 'minimum_stay_length', value: 4 },
   { key: 'check_in_time', value: '12pm' },
-  { key: 'check_out_time', value: '12pm' }
+  { key: 'check_out_time', value: '12pm' },
+  { key: 'manual', value: nil }, # ex: link to Google Doc
+  { key: 'arrival_guide', value: nil } # ex: link to Google Doc
 ]
 
 settings.each { |setting| Setting.find_or_create_by(setting) }
