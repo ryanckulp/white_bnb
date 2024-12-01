@@ -24,6 +24,12 @@
           <p>Check out: <%= booking.end_date.strftime('%A') %> @ <%= Setting.lookup('check_out_time') %></p>
           <p>Host phone: <%= Setting.lookup('host_phone_number') %></p>
           <p>Host email: <%= Setting.lookup('host_email') %></p>
+
+          <% %w[arrival_guide manual].each do |resource| %>
+            <% if Setting.lookup(resource) %>
+              <p><%= resource.titleize %>: <%= link_to 'view here', Setting.lookup(resource), class: 'underline', target: :_blank %></p>
+            <% end %>
+          <% end %>
         </div>
       </div>
     </div>
