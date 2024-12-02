@@ -15,7 +15,9 @@ ActiveAdmin.register Announcement do
     selectable_column
     id_column
     column :title
-    column 'body', &:body.to_s
+    column 'body' do |announcement|
+      announcement.body.to_s
+    end
     column :date
     column :published
     column :created_at
