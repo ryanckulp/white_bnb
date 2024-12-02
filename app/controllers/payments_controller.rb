@@ -30,6 +30,7 @@ class PaymentsController < ApplicationController
                Stripe::SetupIntent.retrieve(params[:setup_intent])
              end
 
+    # rubocop:disable Style/RescueModifier
     if intent.status == 'succeeded'
       @booking.update(stripe_payment_id: intent.id)
       AdminMailer.new_booking(@booking).deliver rescue nil
@@ -37,6 +38,7 @@ class PaymentsController < ApplicationController
     else
       redirect_to checkout_index_path, alert: "Something went wrong, please try again."
     end
+    # rubocop:enable Style/RescueModifier
   end
 
   private
